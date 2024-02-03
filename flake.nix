@@ -10,9 +10,9 @@
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      flake_mini_bios = lib.nixosSystem {
+      flake_mini_mbr = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ flake_mini_bios/configuration.nix ];
+        modules = [ flake_mini_mbr/configuration.nix ];
       };
       flake_mini = lib.nixosSystem {
         system = "x86_64-linux";
