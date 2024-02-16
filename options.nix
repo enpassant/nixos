@@ -22,6 +22,7 @@ in {
   flakeDir = "${flakeDir}";
   terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
   vm = "sway";
+  # vm = "hyprland";
 
   # System Settings
   clock24h = true;
@@ -36,6 +37,18 @@ in {
   # This is for running NixOS
   # On a tmpfs or root on RAM
   # You Most Like Want This -> false
+  impermanence = true; # This should be set to false unless you know what your doing!
+  sdl-videodriver = "x11"; # Either x11 or wayland ONLY. Games might require x11 set here
+  # For Hybrid Systems intel-nvidia
+  # Should Be Used As gpuType
+  cpuType = "intel";
+  gpuType = "amd";
+
+  # Nvidia Hybrid Devices
+  # ONLY NEEDED FOR HYBRID
+  # SYSTEMS! 
+  intel-bus-id = "PCI:0:2:0";
+  nvidia-bus-id = "PCI:14:0:0";
 
   # NTP & HWClock Settings
   ntp = true;

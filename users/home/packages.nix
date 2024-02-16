@@ -10,7 +10,6 @@ in {
     gotop htop bottom
     mpd ncmpcpp
     aerc
-    waybar
     rofi-wayland
     mako
     lf
@@ -20,7 +19,7 @@ in {
     remmina
     virtualbox
     clementine
-    font-awesome spotify swayidle neovide element-desktop swaylock
+    font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 }

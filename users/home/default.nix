@@ -13,10 +13,11 @@
     ./packages.nix
     # ./rofi.nix
     # ./starship.nix
-    # ./waybar.nix
+    ./waybar.nix
     # ./swappy.nix
     # ./swaylock.nix
     # ./swaync.nix
+    ./sway.nix
     # ./wezterm.nix
     # ./zsh.nix
 

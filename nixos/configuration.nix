@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username,hostname, ... }:
+{ config, pkgs, inputs, username, hostname, ... }:
 
 let
   inherit (import ../options.nix) 
@@ -59,6 +59,12 @@ in {
   services.xserver.displayManager.defaultSession = "${vm}";
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  programs.dconf.enable = true;
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  #   xwayland.enable = true;
+  # };
 
   # Configure keymap in X11
   services.xserver = {

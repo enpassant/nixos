@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   inherit (import ../options.nix) 
-    browser flakeDir;
+    browser flakeDir theme;
 
   myAliases = {
     ho-rebuild="home-manager switch --flake ${flakeDir}";
@@ -17,30 +17,13 @@ in {
   home.username = "feca";
   home.homeDirectory = "/home/feca";
 
+  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
+
   imports = [
-    # inputs.nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     # inputs.hyprland.homeManagerModules.default
     ./home
   ];
-
-  wayland.windowManager.sway = {
-    enable = true;
-    xwayland = true;
-    config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
-      terminal = "foot";
-      output = {
-        "Virtual-1" = {
-          mode = "1920x1080@60Hz";
-        };
-      };      
-      startup = [
-        # Launch Firefox on start
-        {command = "foot";}
-      ];
-    };
-  };
 
   programs.zsh = {
     enable = true;
