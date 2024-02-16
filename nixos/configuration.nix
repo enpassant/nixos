@@ -2,9 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, username,hostname, ... }:
 
-{
+let
+  inherit (import ../options.nix) 
+    theLocale theTimezone gitUsername
+    theShell wallpaperDir wallpaperGit
+    theLCVariables theKBDLayout;
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -14,7 +19,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "${hostname}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -28,19 +33,21 @@
   time.timeZone = "Europe/Budapest";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "hu_HU.UTF-8";
+  i18n.defaultLocale = "${theLocale}";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "hu_HU.UTF-8";
-    LC_IDENTIFICATION = "hu_HU.UTF-8";
-    LC_MEASUREMENT = "hu_HU.UTF-8";
-    LC_MONETARY = "hu_HU.UTF-8";
-    LC_NAME = "hu_HU.UTF-8";
-    LC_NUMERIC = "hu_HU.UTF-8";
-    LC_PAPER = "hu_HU.UTF-8";
-    LC_TELEPHONE = "hu_HU.UTF-8";
-    LC_TIME = "hu_HU.UTF-8";
+    LC_ADDRESS = "${theLCVariables}";
+    LC_IDENTIFICATION = "${theLCVariables}";
+    LC_MEASUREMENT = "${theLCVariables}";
+    LC_MONETARY = "${theLCVariables}";
+    LC_NAME = "${theLCVariables}";
+    LC_NUMERIC = "${theLCVariables}";
+    LC_PAPER = "${theLCVariables}";
+    LC_TELEPHONE = "${theLCVariables}";
+    LC_TIME = "${theLCVariables}";
   };
+
+  console.keyMap = "${theKBDLayout}";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -79,20 +86,12 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.feca = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "Kálmán Ferenc";
+    description = "${gitUsername}";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      firefox
-      keepassxc
-      megasync
-      teams-for-linux
-      remmina
-      virtualbox
-      clementine
-    #  thunderbird
     ];
   };
   users.defaultUserShell = pkgs.zsh;

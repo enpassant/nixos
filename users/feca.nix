@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 let
+  inherit (import ../options.nix) 
+    browser flakeDir;
+
   myAliases = {
+    ho-rebuild="home-manager switch --flake ${flakeDir}";
+    no-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
+    no-update="sudo nix flake update ${flakeDir}";
+    gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     ll = "ls -alh";
     ".." = "cd ..";
   };
@@ -9,6 +16,31 @@ in {
   # paths it should manage.
   home.username = "feca";
   home.homeDirectory = "/home/feca";
+
+  imports = [
+    # inputs.nix-colors.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
+    ./home
+  ];
+
+  wayland.windowManager.sway = {
+    enable = true;
+    xwayland = true;
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "foot";
+      output = {
+        "Virtual-1" = {
+          mode = "1920x1080@60Hz";
+        };
+      };      
+      startup = [
+        # Launch Firefox on start
+        {command = "foot";}
+      ];
+    };
+  };
 
   programs.zsh = {
     enable = true;
