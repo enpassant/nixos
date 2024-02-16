@@ -12,10 +12,10 @@ in with lib; {
       layer = "top";
       position = "top";
 
-      modules-center = if simplebar == true then [ "hyprland/window" ] 
-      else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
-      modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
-      else [ "custom/startmenu" "hyprland/window" ];
+      modules-center = if simplebar == true then [ "sway/window" ] 
+      else [ "network" "pulseaudio" "cpu" "sway/workspaces" "memory" "disk" "clock" ];
+      modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
+      else [ "custom/startmenu" "sway/window" ];
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
       else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
@@ -35,7 +35,7 @@ in with lib; {
       	tooltip = true;
 	tooltip-format = "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>";
       };
-      "hyprland/window" = {
+      "sway/window" = {
       	max-length = 25;
       	separate-outputs = false;
       };

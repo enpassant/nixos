@@ -7,8 +7,9 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    wl-clipboard xclip
     gotop htop bottom
-    mpd ncmpcpp
+    mpc-cli pavucontrol
     aerc
     rofi-wayland
     mako

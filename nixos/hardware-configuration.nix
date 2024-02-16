@@ -21,6 +21,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/music" =
+    { device = "/dev/disk/by-label/music";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }
     ];

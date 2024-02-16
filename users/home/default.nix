@@ -10,6 +10,8 @@
     # ./kdenlive.nix
     # ./kitty.nix
     # ./neofetch.nix
+    ./mpd.nix
+    ./ncmpcpp.nix
     ./packages.nix
     # ./rofi.nix
     # ./starship.nix
