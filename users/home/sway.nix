@@ -23,8 +23,12 @@ in lib.mkIf (vm == "sway") {
         };
       };      
       startup = [
-        # Launch Firefox on start
-        {command = "foot";}
+        { command = "foot"; }
+      ];
+      bars = [
+        {
+          command = "waybar";
+        }
       ];
     };
   };
