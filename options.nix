@@ -21,6 +21,7 @@ in {
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
   terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  vm = "sway";
 
   # System Settings
   clock24h = true;
