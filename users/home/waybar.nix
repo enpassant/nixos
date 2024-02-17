@@ -17,7 +17,7 @@ in with lib; {
       modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
       else [ "custom/startmenu" "sway/window" ];
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      else [ "sway/mode" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
       "sway/workspaces" = {
       	format = if simplebar == true then "{name}" else "{icon}";
@@ -29,11 +29,15 @@ in with lib; {
       	on-scroll-up = "hyprctl dispatch workspace e+1";
       	on-scroll-down = "hyprctl dispatch workspace e-1";
       };
+      "sway/mode" = {
+      	"format" = " {}";
+      	"max-length" = 50;
+      };
       "clock" = {
-	format = if clock24h == true then ''{: %H:%M}'' 
-	else ''{: %I:%M %p}'';
-      	tooltip = true;
-	tooltip-format = "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>";
+      	format = if clock24h == true then ''{: %H:%M}'' 
+      	else ''{: %I:%M %p}'';
+            	tooltip = true;
+      	tooltip-format = "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>";
       };
       "sway/window" = {
       	max-length = 25;
