@@ -17,6 +17,7 @@ in lib.mkIf (vm == "sway") {
       modifier = "Mod4";
       # Use kitty as default terminal
       terminal = "foot";
+      menu = "rofi -show combi -modes \"combi,window,drun,run\" -combi-modes=\"combi,window,drun,run\"";
       output = {
         "Virtual-1" = {
           mode = "1920x1080@60Hz";

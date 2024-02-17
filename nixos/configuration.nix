@@ -53,6 +53,9 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  security.polkit.enable = true;
+  hardware.opengl.enable = true;
+
   # Enable the GNOME Desktop Environment.
   programs.sway.enable = vm == "sway";
   # services.xserver.displayManager.gdm.enable = true;
@@ -99,7 +102,7 @@ in {
   users.users."${username}" = {
     isNormalUser = true;
     description = "${gitUsername}";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "polkituser" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];

@@ -13,7 +13,7 @@
     ./mpd.nix
     ./ncmpcpp.nix
     ./packages.nix
-    # ./rofi.nix
+    ./rofi.nix
     # ./starship.nix
     ./waybar.nix
     # ./swappy.nix

@@ -19,7 +19,7 @@ in with lib; {
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
       else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
-      "hyprland/workspaces" = {
+      "sway/workspaces" = {
       	format = if simplebar == true then "{name}" else "{icon}";
       	format-icons = {
           default = " ";
@@ -91,7 +91,7 @@ in with lib; {
         tooltip = false;
         format = " ";
         # exec = "rofi -show drun";
-        on-click = "rofi-launcher";
+        on-click = "rofi -show drun";
       };
       "idle_inhibitor" = {
         format = "{icon}";

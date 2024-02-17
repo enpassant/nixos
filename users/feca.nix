@@ -14,8 +14,13 @@ let
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "feca";
-  home.homeDirectory = "/home/feca";
+  home = {
+    username = "feca";
+    homeDirectory = "/home/feca";
+    sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = 1;
+    };
+  };
 
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
 
@@ -24,6 +29,11 @@ in {
     # inputs.hyprland.homeManagerModules.default
     ./home
   ];
+
+  programs.bash = {
+    enable = true;
+    shellAliases = myAliases;
+  };
 
   programs.zsh = {
     enable = true;

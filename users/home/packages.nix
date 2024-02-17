@@ -11,7 +11,7 @@ in {
     gotop htop bottom
     mpc-cli pavucontrol
     aerc
-    rofi-wayland
+    rofi-wayland bemoji
     mako
     lf
     keepassxc
