@@ -20,7 +20,7 @@ in {
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  terminal = "foot"; # This sets the terminal that is used by the hyprland terminal keybinding
   vm = "sway";
   # vm = "hyprland";
 

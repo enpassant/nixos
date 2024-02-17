@@ -13,7 +13,7 @@ in {
     aerc
     rofi-wayland bemoji
     mako
-    lf
+    mc lf
     keepassxc
     megasync
     teams-for-linux

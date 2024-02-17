@@ -23,6 +23,6 @@
     # ./wezterm.nix
     # ./zsh.nix
 
-    # ./files.nix
+    ./files.nix
   ];
 }
