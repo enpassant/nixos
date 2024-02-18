@@ -35,8 +35,8 @@ in lib.mkIf (vm == "sway") {
         modes = {
           Escape = "mode default";
           Return = "mode default";
-          r = "mode resize";
-          m = "mode music";
+          r = ''mode resize; exec makoctl dismiss -a; exec notify-send -a "Sway-mode" "Resize mode" "j,Down  - Resize grow height 10px\nk,Up    - Resize shrink height by 10 px\nh,Left  - Resize shrink width by 10 px\nl,Right - Resize grow width by 10 px\na       - Move left with 10px\nd       - Move right with 10px\nw       - Move up with 10px\ns       - Move down with 10px\nESC     - exit to normal mode\nENTER   - exit to normal mode"'';
+          m = ''mode music; exec makoctl dismiss -a; exec notify-send -a "Sway-mode" "Music modee" "n     - Start music player\nh     - Previous track\nl     - Next track\nk     - Volume up\nj     - Volume down\nm     - Mute toggle\nf     - Seek forward\nb     - Seek backward\np     - Pause/Play\ns     - Stop\nESC   - exit to normal mode\nENTER - exit to normal mode"'';
         };
         music = {
           Escape = "mode default";
@@ -71,7 +71,7 @@ in lib.mkIf (vm == "sway") {
       };
     };
     extraConfig = ''
-      bindsym Mod4+m              mode modes
+      bindsym Mod4+m mode modes; exec notify-send -a "Sway-mode" "Modes mode" "r     - resize\nm     - music\nESC   - exit to normal mode\nENTER - exit to normal mode"
       bindsym Print               exec shotman -c output
       bindsym Print+Shift         exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
