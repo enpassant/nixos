@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSet, ... }:
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) alacritty;
+  inherit (userSet) alacritty;
 in lib.mkIf (alacritty == true) {
   programs.alacritty = {
     enable = true;

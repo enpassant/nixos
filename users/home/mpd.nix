@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSet, ... }:
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) slickbar simplebar clock24h;
+  inherit (userSet) slickbar simplebar clock24h;
 in with lib; {
   services.mpd = {
     enable = true;

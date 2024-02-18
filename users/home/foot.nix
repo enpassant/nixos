@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSet, ... }:
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) foot;
+  inherit (userSet) foot;
 in lib.mkIf (foot == true) {
   programs.foot = {
     enable = true;

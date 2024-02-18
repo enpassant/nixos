@@ -17,7 +17,6 @@
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    inherit (import ./options.nix) username hostname;
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -34,25 +33,23 @@
         inherit system;
         modules = [ flake_mini/configuration.nix ];
       };
-      "${hostname}" = lib.nixosSystem {
+      nixos = lib.nixosSystem {
         specialArgs = {
           inherit system;
           inherit inputs;
-          inherit username;
-          inherit hostname;
+          sysSet = import ./system/nixos.nix;
         };
         modules = [ nixos/configuration.nix ];
       };
     };
     homeConfigurations = {
-      "${username}" = home-manager.lib.homeManagerConfiguration {
+      feca = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs;
-          inherit username;
-          inherit hostname;
+          userSet = import ./users/feca.nix;
         };
-        modules = [ ./users/${username}.nix ];
+        modules = [ ./users/home.nix ];
       };
     };
   };

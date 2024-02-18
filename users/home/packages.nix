@@ -1,8 +1,7 @@
-{ pkgs, config, username, ... }:
+{ pkgs, config, username, userSet, ... }:
 
 let
-  inherit (import ../../options.nix)
-    browser flakeDir;
+  inherit (userSet) browser flakeDir;
 in {
   # Install Packages For The User
   home.packages = with pkgs; [
@@ -14,7 +13,7 @@ in {
     mpc-cli pavucontrol
     aerc
     rofi-wayland bemoji
-    mako libnotify
+    libnotify
     mc lf
     keepassxc
     megasync

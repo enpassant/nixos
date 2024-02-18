@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSet, ... }:
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) slickbar simplebar clock24h;
+  inherit (userSet) slickbar simplebar clock24h;
 in with lib; {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -12,7 +12,7 @@ in with lib; {
       layer = "top";
       position = "top";
 
-      modules-center = if simplebar == true then [ "sway/window" ] 
+      modules-center = if simplebar == true then [ "sway/window" ]
       else [ "network" "pulseaudio" "cpu" "sway/workspaces" "memory" "disk" "clock" ];
       modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
       else [ "custom/startmenu" "sway/window" ];
@@ -34,7 +34,7 @@ in with lib; {
       	"max-length" = 50;
       };
       "clock" = {
-      	format = if clock24h == true then ''{: %H:%M}'' 
+      	format = if clock24h == true then ''{: %H:%M}''
       	else ''{: %I:%M %p}'';
             	tooltip = true;
       	tooltip-format = "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>";
@@ -172,7 +172,7 @@ in with lib; {
 	  color: #${palette.base00};
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  border-radius: 0px;
 	  border: 0px;
 	  font-style: normal;
@@ -198,7 +198,7 @@ in with lib; {
 	  transition: all 0.3s ease-in-out;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  opacity: 0.3;
 	  border: 0px;
 	  transition: all 0.3s ease-in-out;
@@ -226,7 +226,7 @@ in with lib; {
 	  transition: all 0.3s ease-in-out;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  opacity: 1.0;
 	  border: 0px;
 	  transition: all 0.3s ease-in-out;
@@ -250,7 +250,7 @@ in with lib; {
 	  opacity: 0.8;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  opacity: 0.8;
 	  border: 0px;
 	  transition: all 0.3s ease-in-out;
@@ -278,7 +278,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  margin: 4px;
@@ -297,7 +297,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -315,7 +315,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -333,7 +333,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -351,7 +351,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -369,7 +369,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -387,7 +387,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -405,7 +405,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -423,7 +423,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -441,7 +441,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -459,7 +459,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -477,7 +477,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -495,7 +495,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};
@@ -513,7 +513,7 @@ in with lib; {
 	  padding: 2px 20px;
 	'' else if simplebar == true then ''
 	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
+          background: transparent;
 	  margin: 4px;
 	'' else ''
 	  background: #${palette.base01};

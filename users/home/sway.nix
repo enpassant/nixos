@@ -1,9 +1,9 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, userSet, ... }:
 
 let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit (import ../../options.nix) 
+  inherit (userSet)
     browser cpuType gpuType vm
     wallpaperDir borderAnim
     theKBDLayout terminal
@@ -22,7 +22,7 @@ in lib.mkIf (vm == "sway") {
         "Virtual-1" = {
           mode = "1920x1080@60Hz";
         };
-      };      
+      };
       startup = [
         { command = "foot"; }
       ];

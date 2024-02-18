@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, username, hostname, ... }:
+{ config, pkgs, inputs, sysSet, ... }:
 
 let
-  inherit (import ../options.nix) 
-    vm
-    theLocale theTimezone gitUsername
-    theShell wallpaperDir wallpaperGit
+  inherit (sysSet)
+    hostname
+    vm username
+    theLocale theTimezone displayUsername
+    theShell
     theLCVariables theKBDLayout;
 in {
   imports =
@@ -103,7 +104,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${username}" = {
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = "${displayUsername}";
     extraGroups = [ "networkmanager" "wheel" "polkituser" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
