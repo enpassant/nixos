@@ -119,7 +119,6 @@ in {
     helix
     tmux
     git
-    vim-full neovim nodejs-slim
     mc
     openvpn
     home-manager

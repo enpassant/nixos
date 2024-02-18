@@ -1,18 +1,20 @@
 { pkgs, config, username, ... }:
 
-let 
-  inherit (import ../../options.nix) 
+let
+  inherit (import ../../options.nix)
     browser flakeDir;
 in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    vim-full neovim nodejs-slim
+    silver-searcher
     wl-clipboard xclip
     gotop htop bottom
     mpc-cli pavucontrol
     aerc
     rofi-wayland bemoji
-    mako
+    mako libnotify
     mc lf
     keepassxc
     megasync
