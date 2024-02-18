@@ -56,6 +56,8 @@ in {
   security.polkit.enable = true;
   hardware.opengl.enable = true;
 
+  security.pki.certificateFiles = [ ./files/lets-encrypt-r3.pem ];
+
   # Enable the GNOME Desktop Environment.
   programs.sway.enable = vm == "sway";
   # services.xserver.displayManager.gdm.enable = true;
