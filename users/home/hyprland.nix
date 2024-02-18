@@ -1,8 +1,8 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, userSet, ... }:
 
 let
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit (import ../../options.nix) 
+  inherit (userSet)
     browser cpuType gpuType vm theme
     wallpaperDir borderAnim
     theKBDLayout terminal
