@@ -13,5 +13,9 @@
     source = ./files/tmux;
     recursive = true;
   };
+  home.file."bin" = {
+    source = ./files/bin;
+    recursive = true;
+  };
 }
 

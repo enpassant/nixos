@@ -15,6 +15,7 @@ in {
     rofi-wayland bemoji
     libnotify
     mc lf
+    jq
     keepassxc
     megasync
     teams-for-linux
