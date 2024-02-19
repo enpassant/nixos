@@ -20,11 +20,19 @@ in with lib; {
       else [ "sway/mode" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
       "sway/workspaces" = {
-      	format = if simplebar == true then "{name}" else "{icon}";
+        #format = if simplebar == true then "{name}" else "{icon}";
+      	format = "{icon}";
       	format-icons = {
-          default = " ";
-          active = " ";
-          urgent = " ";
+          "1" = "1";
+          "2" = "2";
+          "3" = "3";
+          "4" = "4";
+          "5" = "5";
+          "6" = "6";
+          "7" = "7";
+          "8" = "8";
+          "9" = "9";
+          "10" = "0";
       	};
       	on-scroll-up = "hyprctl dispatch workspace e+1";
       	on-scroll-down = "hyprctl dispatch workspace e-1";
