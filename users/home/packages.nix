@@ -24,5 +24,6 @@ in {
     clementine
     font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    cmatrix
   ];
 }
