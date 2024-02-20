@@ -1,7 +1,6 @@
 {
   username = "feca";
   displayUsername = "Enpassant";
-  hostname = "nixos";
   vm = "sway";
   # vm = "hyprland";
 

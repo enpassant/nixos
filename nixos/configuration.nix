@@ -6,7 +6,7 @@
 
 let
   inherit (sysSet)
-    hostname
+    hostname hardware
     vm username
     theLocale theTimezone displayUsername
     theShell
@@ -14,7 +14,7 @@ let
 in {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration${hardware}.nix
     ];
 
   # Bootloader.

@@ -33,11 +33,21 @@
         inherit system;
         modules = [ flake_mini/configuration.nix ];
       };
-      nixos = lib.nixosSystem {
+      nixos-sdc6 = lib.nixosSystem {
         specialArgs = {
           inherit system;
           inherit inputs;
-          sysSet = import ./system/nixos.nix;
+          sysSet = (import ./system/nixos-sdc6.nix) //
+            (import ./system/nixos.nix);
+        };
+        modules = [ nixos/configuration.nix ];
+      };
+      nixos-vm = lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+          sysSet = (import ./system/nixos-vm.nix) //
+            (import ./system/nixos.nix);
         };
         modules = [ nixos/configuration.nix ];
       };
