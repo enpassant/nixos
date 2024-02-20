@@ -37,7 +37,8 @@
         specialArgs = {
           inherit system;
           inherit inputs;
-          sysSet = import ./system/nixos_sdc6.nix;
+          sysSet = (import ./system/nixos_sdc6.nix) //
+            (import ./system/nixos.nix);
         };
         modules = [ nixos/configuration.nix ];
       };
@@ -45,7 +46,8 @@
         specialArgs = {
           inherit system;
           inherit inputs;
-          sysSet = import ./system/nixos_vm.nix;
+          sysSet = (import ./system/nixos_vm.nix) //
+            (import ./system/nixos.nix);
         };
         modules = [ nixos/configuration.nix ];
       };
