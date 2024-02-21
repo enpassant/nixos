@@ -6,6 +6,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    libsixel
     vim-full neovim nodejs-slim
     silver-searcher
     wl-clipboard xclip
@@ -14,14 +15,13 @@ in {
     aerc
     rofi-wayland bemoji
     libnotify
-    mc lf
-    jq
+    mc
+    jq file
     keepassxc
     megasync
     teams-for-linux
     remmina
     virtualbox
-    clementine
     font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     cmatrix

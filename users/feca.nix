@@ -7,6 +7,7 @@ in {
   # User Variables
   inherit username;
   inherit userHome;
+  editor = "vim";
   gitUsername = "Enpassant";
   gitEmail = "enpassant.prog@gmail.com";
   theme = "gigavolt";
@@ -15,7 +16,7 @@ in {
   borderAnim = true;
   browser = "firefox";
   wallpaperGit = "https://gitlab.com/Zaney/my-wallpapers.git"; # This will give you my wallpapers
-  # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
+  # ^ (use as is or replace with your own repo - removing will break the wallsetter script)
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
@@ -45,7 +46,7 @@ in {
 
   # Nvidia Hybrid Devices
   # ONLY NEEDED FOR HYBRID
-  # SYSTEMS! 
+  # SYSTEMS!
   intel-bus-id = "PCI:0:2:0";
   nvidia-bus-id = "PCI:14:0:0";
 

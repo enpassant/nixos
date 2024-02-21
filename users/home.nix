@@ -1,7 +1,7 @@
 { config, pkgs, inputs, userSet, ... }:
 let
   inherit (userSet)
-    username userHome
+    username userHome editor
     browser flakeDir theme;
 
   myAliases = {
@@ -20,6 +20,7 @@ in {
     homeDirectory = "${userHome}";
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = 1;
+      EDITOR = "${editor}";
     };
   };
 
@@ -34,11 +35,18 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = myAliases;
+    bashrcExtra = ''
+      source $HOME/.config/user-dirs.dirs
+    '';
   };
 
   programs.zsh = {
     enable = true;
     shellAliases = myAliases;
+    initExtra = ''
+      set shellopts '-euy'
+      source $HOME/.config/user-dirs.dirs
+    '';
   };
 
   # This value determines the Home Manager release that your

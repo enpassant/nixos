@@ -56,7 +56,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "hu";
@@ -143,33 +142,32 @@
 
   services.xserver.displayManager.sddm.enable = true;
 
- 
   # Enabling hyprlnd on NixOS
   programs.hyprland = {
     enable = true;
     nvidiaPatches = true;
     xwayland.enable = true;
   };
-  
+
   environment.sessionVariables = {
     # If your cursor becomes invisible
     WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
-  
+
   hardware = {
       # Opengl
       opengl.enable = true;
-  
+
       # Most wayland compositors need this
       nvidia.modesetting.enable = true;
   };
-  
+
   # XDG portal
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  
+
   # Enable sound with pipewire.
   sound.enable = true;
   security.rtkit.enable = true;
@@ -180,7 +178,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
- 
+
   fonts.fonts = with pkgs; [
     font-awesome
     noto-fonts
@@ -193,7 +191,7 @@
     dina-font
     proggyfonts
   ];
- 
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave

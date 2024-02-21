@@ -1,0 +1,10 @@
+#!/bin/sh
+test -L $1 && f=$(readlink -f $1)
+mime=$(file -L --mime-type "$1" -b)
+echo $mime
+case "$mime" in
+    text/*) $EDITOR $1;;
+    application/json*) $EDITOR $1;;
+    *) for f in $*; do xdg-open $f > /dev/null 2> /dev/null & done;;
+esac
+exit 0

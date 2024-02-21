@@ -10,6 +10,7 @@
     # ./kdenlive.nix
     # ./kitty.nix
     # ./neofetch.nix
+    ./lf.nix
     ./mako.nix
     ./mpd.nix
     ./ncmpcpp.nix
