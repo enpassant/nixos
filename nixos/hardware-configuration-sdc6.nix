@@ -19,7 +19,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E206D-7F59";
+    { device = "/dev/disk/by-label/ESP1";
       fsType = "vfat";
     };
 
