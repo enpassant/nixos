@@ -66,11 +66,11 @@ in {
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    xwayland.enable = true;
-  };
+  #programs.hyprland = {
+    #enable = true;
+    #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    #xwayland.enable = true;
+  #};
 
   # Configure keymap in X11
   services.xserver = {

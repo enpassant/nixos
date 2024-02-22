@@ -44,8 +44,8 @@ in {
     enable = true;
     shellAliases = myAliases;
     initExtra = ''
-      set shellopts '-euy'
       source $HOME/.config/user-dirs.dirs
+      bindkey ^R history-incremental-pattern-search-backward
     '';
   };
 

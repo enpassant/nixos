@@ -7,6 +7,10 @@ in {
     enable = true;
     settings = {
       #preview = true;
+      shell = "zsh";
+      shellopts = "-euy";
+      ifs = "\n";
+      scrolloff = 10;
       previewer = "~/.config/lf/preview";
       hidden = true;
       drawbox = true;
@@ -48,11 +52,16 @@ in {
       dd = "delete";
 
       gh = "cd";
+      gc = "cd ~/.config";
       gd = ''$lf -remote "send $id cd $(xdg-user-dir DOWNLOAD)"'';
       gD = ''$lf -remote "send $id cd $(xdg-user-dir DOCUMENTS)"'';
       gm = ''$lf -remote "send $id cd $(xdg-user-dir MUSIC)"'';
       gp = ''$lf -remote "send $id cd $(xdg-user-dir PICTURES)"'';
       gv = ''$lf -remote "send $id cd $(xdg-user-dir VIDEOS)"'';
+      "<enter>" = "shell";
+
+      i = ''$LESSOPEN='| ˜/.config/lf/preview %s' less -R $f'';
+      SP = ''$if test -f /tmp/text-preview; then rm /tmp/text-preview; else touch /tmp/text-preview; fi; lf -remote "send $id reload"'';
     };
   };
 

@@ -17,7 +17,8 @@ in {
     rofi-wayland bemoji
     libnotify
     mc
-    jq file
+    exiftool
+    jq file bat
     keepassxc
     megasync
     teams-for-linux
