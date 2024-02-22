@@ -6,9 +6,9 @@
     ./foot.nix
     # ./bash.nix
     # ./gtk-qt.nix
-    # ./hyprland.nix
+     ./hyprland.nix
     # ./kdenlive.nix
-    # ./kitty.nix
+     ./kitty.nix
     # ./neofetch.nix
     ./lf.nix
     ./mako.nix

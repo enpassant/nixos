@@ -10,7 +10,7 @@ let
     theKBDVariant sdl-videodriver;
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
   palette = colorScheme.palette;
-in lib.mkIf (vm == "hyprland") {
+in lib.mkIf (vm == "hyprland" || vm == "sway") {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;

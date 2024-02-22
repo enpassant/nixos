@@ -71,7 +71,7 @@ in {
   wezterm = false;
   alacritty = true;
   foot = true;
-  kitty = false;
+  kitty = true;
 
   # Enable Python & PyCharm
   python = false;
