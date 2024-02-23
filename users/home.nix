@@ -1,8 +1,9 @@
-{ config, pkgs, inputs, userSet, ... }:
+{ config, pkgs, inputs, lib, userSet, ... }:
 let
   inherit (userSet)
     username userHome editor
-    browser flakeDir theme;
+    browser flakeDir theme
+    theKBDLayout theSecondKBDLayout theKBDVariant;
 
   myAliases = {
     ho-rebuild="home-manager switch --flake ${flakeDir}";
@@ -21,6 +22,13 @@ in {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = 1;
       EDITOR = "${editor}";
+    };
+  };
+
+  dconf.settings = {
+    "org.gnome.desktop.input-sources" = {
+      sources = "[ ('xkb', 'us'),  ('xkb' '${theKBDLayout}+${theSecondKBDLayout}') ]";
+      xkb-options = [ "${theKBDVariant}" ];
     };
   };
 

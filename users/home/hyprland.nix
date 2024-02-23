@@ -36,7 +36,8 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       }
 
       input {
-        kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
+        kb_layout = ${theKBDLayout}
+        kb_variant = ${theSecondKBDLayout}
 	kb_options = grp:alt_shift_toggle
         kb_options=caps:super
         follow_mouse = 1

@@ -10,7 +10,7 @@ let
     vm username
     theLocale theTimezone displayUsername
     theShell
-    theLCVariables theKBDLayout;
+    theLCVariables theKBDLayout theSecondKBDLayout theKBDVariant;
 in {
   imports =
     [ # Include the results of the hardware scan.
@@ -62,20 +62,21 @@ in {
   # Enable the GNOME Desktop Environment.
   programs.sway.enable = vm == "sway";
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.defaultSession = "${vm}";
   services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.defaultSession = "${vm}";
   services.xserver.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
-  #programs.hyprland = {
-    #enable = true;
-    #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    #xwayland.enable = true;
-  #};
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    xwayland.enable = true;
+  };
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "altgr-intl";
+  services.xserver.xkb = {
+    layout = "${theKBDLayout}";
+    variant = "${theSecondKBDLayout}";
+    options = "${theKBDVariant}";
   };
 
   # Enable CUPS to print documents.
@@ -155,5 +156,9 @@ in {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 }
