@@ -4,7 +4,17 @@ CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
 
 image() {
 	if ! test -f /tmp/text-preview && [ -n "$WAYLAND_DISPLAY" ]; then
-            img2sixel -w "$(($2*10))"  "$1"
+            iw=$(exiftool -s3 -ImageWidth "$1")
+            ih=$(exiftool -s3 -ImageHeight "$1")
+            width=$(($2*11))
+            height=$(($3*26))
+            wr=$((1000 * $width / $iw))
+            hr=$((1000 * $height / $ih))
+            if test $wr -gt $hr; then
+                img2sixel -h "$height" "$1"
+            else
+                img2sixel -w "$width" "$1"
+            fi
 	else
             exiftool "$1"
 	fi
