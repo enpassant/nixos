@@ -10,14 +10,15 @@ let
     theSecondKBDLayout
     theKBDVariant sdl-videodriver;
 in lib.mkIf (vm == "sway") {
-  wayland.windowManager.sway = {
+  wayland.windowManager.sway = let
+    modifier = "Mod4";
+  in {
     enable = true;
     xwayland = true;
     config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
+      inherit modifier;
       terminal = "foot";
-      menu = "rofi -show combi -modes \"combi,window,drun,run\" -combi-modes=\"combi,window,drun,run\"";
+      menu = "rofi -show";
       output = {
         "Virtual-1" = {
           mode = "1920x1080@60Hz";
@@ -31,6 +32,10 @@ in lib.mkIf (vm == "sway") {
           command = "waybar";
         }
       ];
+      gaps = {
+        inner = 12;
+        outer = 10;
+      };
       modes = {
         modes = {
           Escape = "mode default; exec sh ~/bin/hide-app-noti.sh Sway-mode";
@@ -69,12 +74,30 @@ in lib.mkIf (vm == "sway") {
           s = "move down 10 px";
         };
       };
+      window = {
+        titlebar = false;
+        commands = [
+          {
+            command = "opacity set 0.95";
+            criteria = { title = ".*"; };
+          }
+        ];
+      };
     };
     extraConfig = ''
       bindsym Mod4+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
+      unbindsym Mod4+r
+      unbindsym Mod4+Shift+q
+      bindsym ${modifier}+q kill
+      bindsym Mod4+Shift+w opacity plus 0.05
+      bindsym Mod4+Shift+s opacity minus 0.05
       bindsym Print               exec shotman -c output
       bindsym Print+Shift         exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
+
+      default_border none
+      smart_gaps on
+      output * background ~/wallpapers/aniket-deole-M6XC789HLe8-unsplash.jpg fill
     '';
   };
 }

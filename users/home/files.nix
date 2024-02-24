@@ -13,8 +13,12 @@
     source = ./files/tmux;
     recursive = true;
   };
-  home.file."bin" = {
+  home.file.bin = {
     source = ./files/bin;
+    recursive = true;
+  };
+  home.file.wallpapers = {
+    source = ./files/wallpapers;
     recursive = true;
   };
 }
