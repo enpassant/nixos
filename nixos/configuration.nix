@@ -91,6 +91,7 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -122,10 +123,18 @@ in {
     tmux
     git
     mc
+    pulseaudio
     openvpn
     home-manager
   ];
   environment.shells = [ pkgs.zsh ];
+  environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
+    text = ''
+      apply_properties = {
+        ["session.suspend-timeout-seconds"] = 0
+      }
+    '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

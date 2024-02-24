@@ -39,7 +39,6 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
         kb_layout = ${theKBDLayout}
         kb_variant = ${theKBDVariant}
 	kb_options = ${theKBDOptions}
-        kb_options=caps:super
         follow_mouse = 1
         touchpad {
           natural_scroll = false
@@ -127,22 +126,14 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
         new_is_master = true
       }
       bind = ${modifier},Return,exec,${terminal}
-      bind = ${modifier}SHIFT,Return,exec,rofi-launcher
-      bind = ${modifier}SHIFT,W,exec,web-search
+      bind = ${modifier},D,exec,rofi -show
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
       ${if browser == "google-chrome" then ''
 	bind = ${modifier},W,exec,google-chrome-stable
       '' else ''
 	bind = ${modifier},W,exec,${browser}
       ''}
-      bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
-      bind = ${modifier},D,exec,discord
-      bind = ${modifier},O,exec,obs
-      bind = ${modifier},G,exec,gimp
-      bind = ${modifier}SHIFT,G,exec,godot4
-      bind = ${modifier},T,exec,thunar
-      bind = ${modifier},M,exec,spotify
       bind = ${modifier},Q,killactive,
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
@@ -202,6 +193,45 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ,XF86AudioPrev, exec, playerctl previous
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
+
+      bind = ${modifier},z,exec,~/bin/toggle_sink_port.sh
+
+      bind = ${modifier},M,submap,modes
+      submap=modes
+      bind = ,R,submap,resize
+      bind = ,M,submap,music
+      bind = ,Escape,submap,reset
+      bind = ,Return,submap,reset
+      submap=reset
+
+      submap=music
+      bind = ,N,exec,${terminal} -- ncmpcpp
+      bind = ,H,exec, mpc prev
+      bind = ,L,exec, mpc next
+      bind = ,K,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+      bind = ,J,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+      bind = ,M,exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = ,F,exec, mpc seek +10
+      bind = ,B,exec, mpc seek -10
+      bind = ,P,exec, mpc toggle
+      bind = ,S,exec, mpc stop
+      bind = ,Escape,submap,reset
+      bind = ,Return,submap,reset
+      submap=reset
+
+      submap=resize
+      binde = ,right,resizeactive,10 0
+      binde = ,left,resizeactive,-10 0
+      binde = ,up,resizeactive,0 -10
+      binde = ,down,resizeactive,0 10
+      binde = ,l,resizeactive,10 0
+      binde = ,h,resizeactive,-10 0
+      binde = ,k,resizeactive,0 -10
+      binde = ,j,resizeactive,0 10
+      bind = ,Escape,submap,reset
+      bind = ,Return,submap,reset
+      submap=reset
+
     '' ];
   };
 }

@@ -13,11 +13,28 @@ in with lib; {
       position = "top";
 
       modules-center = if simplebar == true then [ "sway/window" ]
-      else [ "network" "pulseaudio" "cpu" "sway/workspaces" "memory" "disk" "clock" ];
+      else [ "network" "pulseaudio" "cpu" "sway/workspaces" "hyprland/workspaces" "memory" "disk" "clock" ];
       modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
       else [ "custom/startmenu" "sway/window" ];
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else [ "sway/mode" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      else [ "sway/mode" "hyprland/submap" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+
+      "hyprland/workspaces" = {
+        #format = if simplebar == true then "{name}" else "{icon}";
+      	format = "{icon}";
+      	format-icons = {
+          "1" = "1";
+          "2" = "2";
+          "3" = "3";
+          "4" = "4";
+          "5" = "5";
+          "6" = "6";
+          "7" = "7";
+          "8" = "8";
+          "9" = "9";
+          "10" = "0";
+      	};
+      };
 
       "sway/workspaces" = {
         #format = if simplebar == true then "{name}" else "{icon}";
@@ -38,6 +55,10 @@ in with lib; {
       	on-scroll-down = "hyprctl dispatch workspace e-1";
       };
       "sway/mode" = {
+      	"format" = " {}";
+      	"max-length" = 50;
+      };
+      "hyprland/submap" = {
       	"format" = " {}";
       	"max-length" = 50;
       };
