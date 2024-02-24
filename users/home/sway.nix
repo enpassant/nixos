@@ -6,9 +6,9 @@ let
   inherit (userSet)
     browser cpuType gpuType vm
     wallpaperDir borderAnim
-    theKBDLayout terminal
-    theSecondKBDLayout
-    theKBDVariant sdl-videodriver;
+    terminal
+    theKBDLayout theKBDVariant theKBDOptions
+    sdl-videodriver;
 in lib.mkIf (vm == "sway") {
   wayland.windowManager.sway = let
     modifier = "Mod4";

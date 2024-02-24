@@ -10,7 +10,7 @@ let
     vm username
     theLocale theTimezone displayUsername
     theShell
-    theLCVariables theKBDLayout theSecondKBDLayout theKBDVariant;
+    theLCVariables theKBDLayout theKBDVariant theKBDOptions;
 in {
   imports =
     [ # Include the results of the hardware scan.
@@ -75,8 +75,8 @@ in {
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "${theKBDLayout}";
-    variant = "${theSecondKBDLayout}";
-    options = "${theKBDVariant}";
+    variant = "${theKBDVariant}";
+    options = "${theKBDOptions}";
   };
 
   # Enable CUPS to print documents.

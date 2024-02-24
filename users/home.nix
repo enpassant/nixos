@@ -3,7 +3,7 @@ let
   inherit (userSet)
     username userHome editor
     browser flakeDir theme
-    theKBDLayout theSecondKBDLayout theKBDVariant;
+    theKBDLayout theKBDVariant theKBDOptions;
 
   myAliases = {
     ho-rebuild="home-manager switch --flake ${flakeDir}";
@@ -23,12 +23,17 @@ in {
       WLR_NO_HARDWARE_CURSORS = 1;
       EDITOR = "${editor}";
     };
+    keyboard = {
+      layout = "${theKBDLayout}";
+      variant = "${theKBDVariant}";
+      options = "${theKBDOptions}";
+    };
   };
 
   dconf.settings = {
     "org.gnome.desktop.input-sources" = {
-      sources = "[ ('xkb', 'us'),  ('xkb' '${theKBDLayout}+${theSecondKBDLayout}') ]";
-      xkb-options = [ "${theKBDVariant}" ];
+      sources = "[ ('xkb', 'us'),  ('xkb' '${theKBDLayout}+${theKBDVariant}') ]";
+      xkb-options = [ "${theKBDOptions}" ];
     };
   };
 

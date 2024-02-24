@@ -29,8 +29,8 @@ in {
   clock24h = true;
   theLocale = "hu_HU.UTF-8";
   theKBDLayout = "us";
-  theSecondKBDLayout = "altgr-intl";
-  theKBDVariant = "compose:sclk";
+  theKBDVariant = "altgr-intl";
+  theKBDOptions = "compose:sclk";
   theLCVariables = "hu_HU.UTF-8";
   theTimezone = "Europe/Budapest";
   theShell = "zsh"; # Possible options: bash, zsh

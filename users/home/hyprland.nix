@@ -6,8 +6,8 @@ let
     browser cpuType gpuType vm theme
     wallpaperDir borderAnim
     theKBDLayout terminal
-    theSecondKBDLayout
-    theKBDVariant sdl-videodriver;
+    theKBDVariant
+    theKBDOptions sdl-videodriver;
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
   palette = colorScheme.palette;
 in lib.mkIf (vm == "hyprland" || vm == "sway") {
@@ -37,8 +37,8 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
 
       input {
         kb_layout = ${theKBDLayout}
-        kb_variant = ${theSecondKBDLayout}
-	kb_options = grp:alt_shift_toggle
+        kb_variant = ${theKBDVariant}
+	kb_options = ${theKBDOptions}
         kb_options=caps:super
         follow_mouse = 1
         touchpad {
