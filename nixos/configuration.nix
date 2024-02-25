@@ -81,6 +81,11 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -126,6 +131,10 @@ in {
     pulseaudio
     openvpn
     home-manager
+    #libreoffice-qt
+    #hunspell
+    #hunspellDicts.hu_HU
+    #hunspellDicts.en_US
   ];
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
