@@ -95,7 +95,7 @@ in lib.mkIf (vm == "sway") {
       bindsym Print+Shift         exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
 
-      default_border none
+      default_border pixel 1
       smart_gaps on
       output * background ~/wallpapers/aniket-deole-M6XC789HLe8-unsplash.jpg fill
     '';
