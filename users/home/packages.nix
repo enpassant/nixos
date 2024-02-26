@@ -6,6 +6,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    swaybg
     libsixel
     vim-full neovim nodejs-slim
     silver-searcher

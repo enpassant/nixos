@@ -62,6 +62,7 @@ in {
 
       i = ''$LESSOPEN='| ˜/.config/lf/preview %s' less -R $f'';
       SP = ''$if test -f /tmp/text-preview; then rm /tmp/text-preview; else touch /tmp/text-preview; fi; lf -remote "send $id reload"'';
+      SB = ''$~/bin/show_bg.sh $f'';
     };
   };
 
