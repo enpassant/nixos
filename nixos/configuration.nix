@@ -131,11 +131,7 @@ in {
     pulseaudio
     openvpn
     home-manager
-    #libreoffice-qt
-    #hunspell
-    #hunspellDicts.hu_HU
-    #hunspellDicts.en_US
-  ];
+  ] ++ sysSet.extraPackages;
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
     text = ''
