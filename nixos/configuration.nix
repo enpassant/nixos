@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, sysSet, ... }:
+{ config, pkgs, lib, inputs, sysSet, ... }:
 
 let
   inherit (sysSet)
     hostname hardware
     vm username
     theLocale theTimezone displayUsername
-    theShell
+    theShell libreOffice
     theLCVariables theKBDLayout theKBDVariant theKBDOptions;
 in {
   imports =
@@ -131,7 +131,14 @@ in {
     pulseaudio
     openvpn
     home-manager
-  ] ++ sysSet.extraPackages;
+  ] ++ (if libreOffice == true then
+    [
+      libreoffice-qt
+      hunspell
+      hunspellDicts.hu_HU
+      hunspellDicts.en_US
+    ]
+  else []);
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
     text = ''

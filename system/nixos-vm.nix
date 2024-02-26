@@ -1,5 +1,5 @@
 {
   hardware = "-vm";
   hostname = "nixos-vm";
-  extraPackages = [];
+  libreOffice = false;
 }
