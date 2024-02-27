@@ -21,5 +21,9 @@
     source = ./files/wallpapers;
     recursive = true;
   };
+  home.file.".config/aerc" = {
+    source = ./files/aerc;
+    recursive = true;
+  };
 }
 

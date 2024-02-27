@@ -13,7 +13,7 @@ in {
     wl-clipboard xclip
     gotop htop bottom
     mpc-cli pavucontrol
-    aerc
+    aerc pandoc
     rofi-wayland bemoji
     libnotify
     mc
