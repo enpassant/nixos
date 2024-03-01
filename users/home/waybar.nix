@@ -3,22 +3,7 @@
 let
   palette = config.colorScheme.palette;
   inherit (userSet) slickbar simplebar clock24h;
-in with lib; {
-  # Configure & Theme Waybar
-  programs.waybar = {
-    enable = true;
-    package = pkgs.waybar;
-    settings = [{
-      layer = "top";
-      position = "top";
-
-      modules-center = if simplebar == true then [ "sway/window" "hyprland/window" ]
-      else [ "network" "pulseaudio" "cpu" "sway/workspaces" "hyprland/workspaces" "memory" "disk" "clock" ];
-      modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
-      else [ "custom/startmenu" "sway/window" "hyprland/window" ];
-      modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else [ "sway/mode" "hyprland/submap" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
-
+  modulesSettings = {
       "hyprland/workspaces" = {
         #format = if simplebar == true then "{name}" else "{icon}";
       	format = "{icon}";
@@ -169,7 +154,38 @@ in with lib; {
         on-click = "";
         tooltip = false;
       };
-    }];
+    };
+in with lib; {
+  # Configure & Theme Waybar
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar;
+    settings = [
+      (lib.attrsets.mergeAttrsList [ modulesSettings {
+        layer = "top";
+        position = "top";
+        output = "Virtual-1";
+
+        modules-center = if simplebar == true then [ "sway/window" ]
+        else [ "network" "pulseaudio" "cpu" "sway/workspaces" "memory" "disk" "clock" ];
+        modules-left = if simplebar == true then ["custom/startmenu" "sway/workspaces" "cpu" "memory" "network"  ]
+        else [ "custom/startmenu" "sway/window" ];
+        modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
+        else [ "sway/mode" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      } ])
+      (lib.attrsets.mergeAttrsList [ modulesSettings {
+        layer = "top";
+        position = "top";
+        output = "!Virtual-1";
+
+        modules-center = if simplebar == true then [ "hyprland/window" ]
+        else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
+        modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
+        else [ "custom/startmenu" "hyprland/window" ];
+        modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
+        else [ "hyprland/submap" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      } ])
+    ];
     style = concatStrings [''
       * {
 	font-size: 16px;

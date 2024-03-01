@@ -25,7 +25,6 @@ in lib.mkIf (vm == "sway") {
         };
       };
       startup = [
-        { command = "foot"; }
       ];
       bars = [
         {
@@ -98,6 +97,8 @@ in lib.mkIf (vm == "sway") {
       default_border pixel 1
       smart_gaps on
       output * background ~/wallpapers/aniket-deole-M6XC789HLe8-unsplash.jpg fill
+      workspace 1
+      exec ${terminal}
     '';
   };
 }
