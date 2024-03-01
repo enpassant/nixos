@@ -13,7 +13,7 @@ in lib.mkIf (alacritty == true) {
 	decorations = "none";
 	startup_mode = "Windowed";
 	dynamic_title = true;
-	opacity = 0.85;
+	opacity = 0.0;
       };
       cursor = {
 	style = {

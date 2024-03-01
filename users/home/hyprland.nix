@@ -25,6 +25,9 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       windowrule = float, ^(steam)$
       windowrule = size 1080 900, ^(steam)$
       windowrule = center, ^(steam)$
+      windowrulev2 = noblur,class:^(Alacritty)$
+      windowrulev2 = noshadow,class:^(Alacritty)$
+      windowrulev2 = noborder,class:^(Alacritty)$
       general {
         gaps_in = 6
         gaps_out = 8
@@ -95,13 +98,15 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       }
       decoration {
         rounding = 10
-        drop_shadow = false
+        drop_shadow = true
+        active_opacity = 0.95
+        inactive_opacity = 0.7
         blur {
             enabled = true
-            size = 5
-            passes = 3
+            size = 8
+            passes = 1
             new_optimizations = on
-            ignore_opacity = on
+            ignore_opacity = off
         }
       }
       plugin {
