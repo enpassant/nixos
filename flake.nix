@@ -42,6 +42,15 @@
         };
         modules = [ nixos/configuration.nix ];
       };
+      fecaos = lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+          sysSet = (import ./system/fecaos.nix) //
+            (import ./system/nixos.nix);
+        };
+        modules = [ nixos/configuration.nix ];
+      };
       nixos-vm = lib.nixosSystem {
         specialArgs = {
           inherit system;
