@@ -25,5 +25,9 @@
     source = ./files/aerc;
     recursive = true;
   };
+  home.file.".local" = {
+    source = ./files/.local;
+    recursive = true;
+  };
 }
 

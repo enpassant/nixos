@@ -24,7 +24,7 @@ in {
         printf "Directory name: "
         read newd
         mkdir -p -- "$newd"
-        mv -- $fx "$newd"
+        mv -- $fs "$newd"
       }}'';
       mkfile = ''''${{
         printf "File name: "
