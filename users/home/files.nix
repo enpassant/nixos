@@ -29,5 +29,9 @@
     source = ./files/.local;
     recursive = true;
   };
+  home.file.p110 = {
+    source = ./files/p110;
+    recursive = true;
+  };
 }
 

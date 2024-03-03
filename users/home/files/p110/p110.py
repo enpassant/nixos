@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # pip install git+https://github.com/almottier/TapoP100.git@main
 
