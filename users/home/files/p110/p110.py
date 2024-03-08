@@ -5,6 +5,7 @@
 import sys
 import argparse
 import time
+import os
 from PyP100 import PyP110
 
 my_parser = argparse.ArgumentParser(description='Controls p110 plugs')
@@ -45,8 +46,8 @@ args = my_parser.parse_args()
 
 print(vars(args))
 
-user = "kalman.feca@gmail.com"
-pwd = "ojDAQZaV2J"
+user = os.environ["KASA_USER"]
+pwd = os.environ["KASA_PWD"]
 
 if args.plug == 'garage':
     # MAC: b0:a7:b9:0f:83:5c
