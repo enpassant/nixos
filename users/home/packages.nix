@@ -9,6 +9,7 @@ in {
     swaybg
     libsixel
     vim-full neovim nodejs-slim
+    lazygit
     silver-searcher
     wl-clipboard xclip
     gotop htop bottom
