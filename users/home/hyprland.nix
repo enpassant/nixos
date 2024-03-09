@@ -5,6 +5,7 @@ let
   inherit (userSet)
     browser cpuType gpuType vm theme
     wallpaperDir borderAnim
+    defaultSink
     theKBDLayout terminal
     theKBDVariant
     theKBDOptions sdl-videodriver;
@@ -189,9 +190,9 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bindm = ${modifier},mouse:273,resizewindow
       bind = ALT,Tab,cyclenext
       bind = ALT,Tab,bringactivetotop
-      bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      bind = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-      binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = ,XF86AudioRaiseVolume,exec,pactl set-sink-volume ${defaultSink} +5%
+      bind = ,XF86AudioLowerVolume,exec,pactl set-sink-volume ${defaultSink} -5%
+      binde = ,XF86AudioMute, exec, pactl set-sink-mute ${defaultSink} toggle
       bind = ,XF86AudioPlay, exec, playerctl play-pause
       bind = ,XF86AudioPause, exec, playerctl play-pause
       bind = ,XF86AudioNext, exec, playerctl next
@@ -219,9 +220,9 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ,N,exec,${terminal} -- ncmpcpp
       bind = ,H,exec, mpc prev
       bind = ,L,exec, mpc next
-      bind = ,K,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      bind = ,J,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-      bind = ,M,exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = ,K,exec, pactl set-sink-volume ${defaultSink} +5%
+      bind = ,J,exec, pactl set-sink-volume ${defaultSink} -5%
+      bind = ,M,exec, pactl set-sink-mute ${defaultSink} toggle
       bind = ,F,exec, mpc seek +10
       bind = ,B,exec, mpc seek -10
       bind = ,P,exec, mpc toggle

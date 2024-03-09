@@ -7,6 +7,7 @@ let
     browser cpuType gpuType vm
     wallpaperDir borderAnim
     terminal
+    defaultSink
     theKBDLayout theKBDVariant theKBDOptions
     sdl-videodriver;
 in lib.mkIf (vm == "sway") {
@@ -48,9 +49,9 @@ in lib.mkIf (vm == "sway") {
           n = "exec ${terminal} -- ncmpcpp";
           h = "exec mpc prev";
           l = "exec mpc next";
-          k = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-          j = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-          m = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          k = "exec pactl set-sink-volume ${defaultSink} +5%";
+          j = "exec pactl set-sink-volume ${defaultSink} -5%";
+          m = "exec pactl set-sink-mute ${defaultSink} toggle";
           f = "exec mpc seek +10";
           b = "exec mpc seek -10";
           p = "exec mpc toggle";
