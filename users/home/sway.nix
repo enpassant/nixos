@@ -41,7 +41,7 @@ in lib.mkIf (vm == "sway") {
           Escape = "mode default; exec sh ~/bin/hide-app-noti.sh Sway-mode";
           Return = "mode default; exec sh ~/bin/hide-app-noti.sh Sway-mode";
           r = ''mode resize; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Resize mode" "j,Down - Resize grow height 10px\nk,Up - Resize shrink height 10 px\nh,Left - Resize shrink width 10 px\nl,Right - Resize grow width 10 px\na - Move left with 10px\nd - Move right with 10px\nw - Move up with 10px\ns - Move down with 10px\nESC - exit to normal mode\nENTER - exit to normal mode"'';
-          m = ''mode music; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Music modee" "n - Start music player\nh - Previous track\nl - Next track\nk - Volume up\nj - Volume down\nm - Mute toggle\nf - Seek forward\nb - Seek backward\np - Pause/Play\ns - Stop\nz - toggle Speaker/Headphone\nESC - exit to normal mode\nENTER - exit to normal mode"'';
+          m = ''mode music; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Music modee" "n - Start music player\nh - Previous track\nl - Next track\nk - Volume up\nj - Volume down\nm - Mute toggle\nf - Seek forward\nb - Seek backward\np - Pause/Play\ns - Stop\nz - Toggle Speaker/Headphone\nESC - exit to normal mode\nENTER - exit to normal mode"'';
         };
         music = {
           Escape = "mode default; exec sh ~/bin/hide-app-noti.sh Sway-mode";

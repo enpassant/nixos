@@ -10,6 +10,7 @@ in {
     libsixel
     vim-full neovim nodejs-slim
     lazygit
+    zellij
     silver-searcher
     wl-clipboard xclip
     gotop htop bottom
