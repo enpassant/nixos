@@ -6,12 +6,10 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
-    firefox
     swaybg
     libsixel
     vim-full neovim nodejs-slim
     lazygit
-    zellij
     silver-searcher
     wl-clipboard xclip
     gotop htop bottom
