@@ -137,6 +137,7 @@ in {
       hunspell
       hunspellDicts.hu_HU
       hunspellDicts.en_US
+      gimp
     ]
   else []);
   environment.shells = [ pkgs.zsh ];
