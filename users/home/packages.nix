@@ -25,6 +25,7 @@ in {
     teams-for-linux
     remmina
     virtualbox
+    calibre
     font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     cmatrix
