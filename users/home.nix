@@ -12,6 +12,7 @@ let
     gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     ll = "ls -alh";
     ".." = "cd ..";
+    megasync="QT_QPA_PLATFORM=xcb megasync";
   };
 in {
   # Home Manager needs a bit of information about you and the
