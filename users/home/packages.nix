@@ -23,7 +23,7 @@ in {
     keepassxc
     megasync
     teams-for-linux
-    remmina
+    remmina authy
     virtualbox
     calibre
     font-awesome spotify swayidle swaylock
