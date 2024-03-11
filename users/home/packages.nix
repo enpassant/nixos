@@ -29,5 +29,6 @@ in {
     font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     cmatrix
+    brightnessctl
   ];
 }

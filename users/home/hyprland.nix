@@ -193,13 +193,18 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ALT,Tab,bringactivetotop
       bind = ,XF86AudioRaiseVolume,exec,pactl set-sink-volume ${defaultSink} +5%
       bind = ,XF86AudioLowerVolume,exec,pactl set-sink-volume ${defaultSink} -5%
-      binde = ,XF86AudioMute, exec, pactl set-sink-mute ${defaultSink} toggle
-      bind = ,XF86AudioPlay, exec, playerctl play-pause
-      bind = ,XF86AudioPause, exec, playerctl play-pause
-      bind = ,XF86AudioNext, exec, playerctl next
-      bind = ,XF86AudioPrev, exec, playerctl previous
+      bind = ,XF86AudioMute, exec, pactl set-sink-mute ${defaultSink} toggle
+      bind = ,XF86AudioPlay, exec, mpc toggle
+      bind = ,XF86AudioPause, exec, mpc toggle
+      bind = ,XF86AudioNext, exec, mpc next
+      bind = ,XF86AudioPrev, exec, mpc prev
+      bind = ,XF86AudioStop, exec, mpc stop
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
+      bind = ,XF86Tools, exec, ${terminal} -- ncmpcpp
+      bind = ,XF86Calculator, exec, gnome-calculator
+      bind = ,XF86Search, exec, ${terminal} -- lf ~
+      bind = ,XF86Explorer, exec, ${browser}
 
       bind = ${modifier},z,exec,~/bin/toggle_sink_port.sh
 
