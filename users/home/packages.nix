@@ -30,5 +30,6 @@ in {
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     cmatrix
     brightnessctl
+    vhs gum confetty slides
   ];
 }
