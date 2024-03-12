@@ -34,7 +34,7 @@ glowormdcat() {
 	file="$1"
 	shift
 	if command -v glow > /dev/null 2>&1; then
-		glow "$file"
+		glow -s dark "$file"
 	else
 		mdcat "$file"
 	fi

@@ -7,7 +7,7 @@ in {
   # User Variables
   inherit username;
   inherit userHome;
-  editor = "vim";
+  editor = "hx";
   gitUsername = "Enpassant";
   gitEmail = "enpassant.prog@gmail.com";
   theme = "gigavolt";
