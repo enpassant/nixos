@@ -15,6 +15,7 @@ in {
     gotop htop bottom
     mpc-cli pavucontrol
     aerc pandoc
+    marksman
     rofi-wayland bemoji
     libnotify
     mc
