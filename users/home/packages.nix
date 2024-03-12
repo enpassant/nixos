@@ -25,7 +25,7 @@ in {
     megasync
     teams-for-linux
     remmina authy
-    virtualbox
+    virtualbox qemu
     calibre
     font-awesome spotify swayidle swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
