@@ -33,5 +33,7 @@
     source = ./files/p110;
     recursive = true;
   };
+  home.file.".config/waybar/config-sway".source = ./files/waybar/config-sway;
+  home.file."bin/waybar.sh".source = ./files/waybar/waybar.sh;
 }
 

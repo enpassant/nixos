@@ -4,6 +4,7 @@ let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (userSet)
+    userHome
     browser cpuType gpuType vm
     wallpaperDir borderAnim
     terminal
@@ -29,7 +30,7 @@ in lib.mkIf (vm == "sway") {
       ];
       bars = [
         {
-          command = "waybar";
+          command = "${userHome}/bin/waybar.sh";
         }
       ];
       gaps = {
@@ -86,22 +87,47 @@ in lib.mkIf (vm == "sway") {
       };
     };
     extraConfig = ''
-      bindsym Mod4+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
-      unbindsym Mod4+r
-      unbindsym Mod4+Shift+q
+      unbindsym ${modifier}+Shift+e
+      bindsym ${modifier}+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' \
+          -b 'Shutdown' 'systemctl poweroff' \
+          -b 'Reboot' 'systemctl reboot' \
+          -b 'Logout' 'swaymsg exit'
+      bindsym ${modifier}+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
+      unbindsym ${modifier}+r
+      unbindsym ${modifier}+Shift+q
       bindsym ${modifier}+q kill
       bindsym ${modifier}+z exec ~/bin/toggle_sink_port.sh
-      bindsym Mod4+Shift+w opacity plus 0.05
-      bindsym Mod4+Shift+s opacity minus 0.05
+      bindsym ${modifier}+Shift+w opacity plus 0.05
+      bindsym ${modifier}+Shift+s opacity minus 0.05
       bindsym Print               exec shotman -c output
       bindsym Print+Shift         exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
 
+      bindsym XF86AudioRaiseVolume exec pactl set-sink-volume ${defaultSink} +5%
+      bindsym XF86AudioLowerVolume exec pactl set-sink-volume ${defaultSink} -5%
+      bindsym XF86AudioMute exec  pactl set-sink-mute ${defaultSink} toggle
+      bindsym XF86AudioPlay exec  mpc toggle
+      bindsym XF86AudioPause exec  mpc toggle
+      bindsym XF86AudioNext exec  mpc next
+      bindsym XF86AudioPrev exec  mpc prev
+      bindsym XF86AudioStop exec  mpc stop
+      bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+      bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+      bindsym XF86Tools exec  ${terminal} -- ncmpcpp
+      bindsym XF86Calculator exec  gnome-calculator
+      bindsym XF86Search exec  ${terminal} -- lf ~
+      bindsym XF86Explorer exec  ${browser}
+
       default_border pixel 1
       smart_gaps on
       output * background ~/wallpapers/aniket-deole-M6XC789HLe8-unsplash.jpg fill
-      workspace 1
-      exec ${terminal}
+
+      WORKSPACE 1
+      WORKSPACE 3
+      WORKSPACE 10
+      WORKSPACE 1
+      WORKSPACE 3
+      WORKSPACE 2
     '';
   };
 }
