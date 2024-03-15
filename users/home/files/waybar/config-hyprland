@@ -1,0 +1,193 @@
+[
+  {
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-charging": "󰂄 {capacity}%",
+      "format-icons": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "format-plugged": "󱘖 {capacity}%",
+      "on-click": "",
+      "states": {
+        "critical": 15,
+        "warning": 30
+      },
+      "tooltip": false
+    },
+    "clock": {
+      "format": "{: %H:%M}",
+      "tooltip": true,
+      "tooltip-format": "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+      "format": " {usage:2}%",
+      "interval": 5,
+      "tooltip": true
+    },
+    "custom/notification": {
+      "escape": true,
+      "exec": "swaync-client -swb",
+      "exec-if": "which swaync-client",
+      "format": "{icon} {}",
+      "format-icons": {
+        "dnd-inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "notification": "<span foreground='red'><sup></sup></span>"
+      },
+      "on-click": "task-waybar",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "custom/startmenu": {
+      "format": " ",
+      "on-click": "rofi -show drun",
+      "tooltip": false
+    },
+    "custom/themeselector": {
+      "format": "",
+      "on-click": "sleep 0.1 && theme-selector",
+      "tooltip": false
+    },
+    "disk": {
+      "format": " {free}",
+      "tooltip": true
+    },
+    "hyprland/submap": {
+      "format": " {}",
+      "max-length": 50
+    },
+    "hyprland/window": {
+      "format": "{}",
+      "separate-outputs": true
+    },
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "10": "0",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9"
+      }
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+      },
+      "tooltip": "true"
+    },
+    "layer": "top",
+    "memory": {
+      "format": " {}%",
+      "interval": 5,
+      "tooltip": true
+    },
+    "modules-center": [
+      "network",
+      "pulseaudio",
+      "cpu",
+      "hyprland/workspaces",
+      "memory",
+      "disk",
+      "clock"
+    ],
+    "modules-left": [
+      "custom/startmenu",
+      "hyprland/window"
+    ],
+    "modules-right": [
+      "hyprland/submap",
+      "idle_inhibitor",
+      "custom/themeselector",
+      "custom/notification",
+      "battery",
+      "tray"
+    ],
+    "network": {
+      "format-disconnected": "󰤮",
+      "format-ethernet": " {bandwidthDownOctets}",
+      "format-icons": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "format-wifi": "{icon} {signalStrength}%",
+      "tooltip": false
+    },
+    "output": "!Virtual-1",
+    "position": "top",
+    "pulseaudio": {
+      "format": "{icon} {volume}% {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-icons": {
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ],
+        "hands-free": "",
+        "headphone": "",
+        "headset": "",
+        "phone": "",
+        "portable": ""
+      },
+      "format-muted": " {format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": "",
+      "on-click": "pavucontrol"
+    },
+    "sway/mode": {
+      "format": " {}",
+      "max-length": 50
+    },
+    "sway/window": {
+      "max-length": 25,
+      "separate-outputs": true
+    },
+    "sway/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "10": "0",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9"
+      },
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "on-scroll-up": "hyprctl dispatch workspace e+1"
+    },
+    "tray": {
+      "spacing": 12
+    }
+  }
+]

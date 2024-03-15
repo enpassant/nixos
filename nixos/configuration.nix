@@ -11,6 +11,15 @@ let
     theLocale theTimezone displayUsername
     theShell libreOffice
     theLCVariables theKBDLayout theKBDVariant theKBDOptions;
+  swayConfig = pkgs.writeText "greetd-sway-config" ''
+    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+    bindsym Mod4+shift+e exec swaynag \
+      -t warning \
+      -m 'What do you want to do?' \
+      -b 'Poweroff' 'systemctl poweroff' \
+      -b 'Reboot' 'systemctl reboot'
+  '';    
 in {
   imports =
     [ # Include the results of the hardware scan.
@@ -52,19 +61,48 @@ in {
   console.keyMap = "${theKBDLayout}";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   security.polkit.enable = true;
   hardware.opengl.enable = true;
 
   security.pki.certificateFiles = [ ./files/lets-encrypt-r3.pem ];
 
-  # Enable the GNOME Desktop Environment.
-  programs.sway.enable = vm == "sway";
+  # Enable the Sway Window Manager.
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+      };
+    };
+  };
+
+  environment.etc."greetd/environments".text = ''
+    sway
+    Hyprland
+  '';
+  
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "${vm}";
+  # services.xserver.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
+  # services.xserver.displayManager.defaultSession = "${vm}";
+
   services.xserver.desktopManager.gnome.enable = true;
+  # xdg.portal = {
+  #   enable = true;
+  #   wlr.enable = true;
+  #   # gtk portal needed to make gtk apps happy
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # };
+
   programs.dconf.enable = true;
   programs.hyprland = {
     enable = true;

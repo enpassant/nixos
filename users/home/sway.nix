@@ -4,7 +4,6 @@ let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (userSet)
-    userHome
     browser cpuType gpuType vm
     wallpaperDir borderAnim
     terminal
@@ -37,7 +36,7 @@ in lib.mkIf (vm == "sway") {
       ];
       bars = [
         {
-          command = "${userHome}/bin/waybar.sh";
+          command = "waybar";
         }
       ];
       gaps = {
@@ -135,6 +134,7 @@ in lib.mkIf (vm == "sway") {
       WORKSPACE 1
       WORKSPACE 3
       WORKSPACE 2
+      WORKSPACE 1
     '';
   };
 }

@@ -3,6 +3,7 @@
 let
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (userSet)
+    userHome
     browser cpuType gpuType vm theme
     wallpaperDir borderAnim
     defaultSink
@@ -119,7 +120,7 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = swww init
-      exec-once = waybar
+      exec-once = waybar -c ${userHome}/.config/waybar/config-hyprland
       exec-once = swaync
       exec-once = wallsetter
       exec-once = nm-applet --indicator

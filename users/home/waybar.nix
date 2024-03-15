@@ -164,7 +164,7 @@ in with lib; {
       (lib.attrsets.mergeAttrsList [ modulesSettings {
         layer = "top";
         position = "top";
-        output = "Virtual-1";
+        # output = "Virtual-1";
 
         modules-center = if simplebar == true then [ "sway/window" ]
         else [ "network" "pulseaudio" "cpu" "sway/workspaces" "memory" "disk" "clock" ];
@@ -173,18 +173,18 @@ in with lib; {
         modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
         else [ "sway/mode" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
       } ])
-      (lib.attrsets.mergeAttrsList [ modulesSettings {
-        layer = "top";
-        position = "top";
-        output = "!Virtual-1";
+      # (lib.attrsets.mergeAttrsList [ modulesSettings {
+      #   layer = "top";
+      #   position = "top";
+      #   output = "!Virtual-1";
 
-        modules-center = if simplebar == true then [ "hyprland/window" ]
-        else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
-        modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
-        else [ "custom/startmenu" "hyprland/window" ];
-        modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-        else [ "hyprland/submap" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
-      } ])
+      #   modules-center = if simplebar == true then [ "hyprland/window" ]
+      #   else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
+      #   modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
+      #   else [ "custom/startmenu" "hyprland/window" ];
+      #   modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
+      #   else [ "hyprland/submap" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      # } ])
     ];
     style = concatStrings [''
       * {
