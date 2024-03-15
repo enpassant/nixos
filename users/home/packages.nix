@@ -32,5 +32,6 @@ in {
     cmatrix
     brightnessctl
     vhs gum confetty slides graph-easy glow cowsay
+    zig zls
   ];
 }
