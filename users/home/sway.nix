@@ -21,6 +21,13 @@ in lib.mkIf (vm == "sway") {
       inherit modifier;
       terminal = "foot";
       menu = "rofi -show";
+      input = {
+        "*" = {
+          xkb_layout = "${theKBDLayout}";
+          xkb_variant = "${theKBDVariant}";
+        	xkb_options = "${theKBDOptions}";
+        };
+      };
       output = {
         "Virtual-1" = {
           mode = "1920x1080@60Hz";
