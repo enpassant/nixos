@@ -19,6 +19,8 @@ let
           "9" = "9";
           "10" = "0";
       	};
+      	on-scroll-up = "hyprctl dispatch workspace e+1";
+      	on-scroll-down = "hyprctl dispatch workspace e-1";
       };
 
       "sway/workspaces" = {
@@ -36,8 +38,8 @@ let
           "9" = "9";
           "10" = "0";
       	};
-      	on-scroll-up = "hyprctl dispatch workspace e+1";
-      	on-scroll-down = "hyprctl dispatch workspace e-1";
+      	on-scroll-up = "swaymsg workspace next";
+      	on-scroll-down = "swaymsg workspace prev";
       };
       "sway/mode" = {
       	"format" = " {}";
@@ -151,7 +153,7 @@ let
         format-charging = "󰂄 {capacity}%";
         format-plugged = "󱘖 {capacity}%";
         format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        on-click = "";
+        on-click = "wlogout";
         tooltip = false;
       };
     };

@@ -94,10 +94,7 @@ in lib.mkIf (vm == "sway") {
     };
     extraConfig = ''
       unbindsym ${modifier}+Shift+e
-      bindsym ${modifier}+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' \
-          -b 'Shutdown' 'systemctl poweroff' \
-          -b 'Reboot' 'systemctl reboot' \
-          -b 'Logout' 'swaymsg exit'
+      bindsym ${modifier}+Shift+e exec wlogout
       bindsym ${modifier}+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
       unbindsym ${modifier}+r
       unbindsym ${modifier}+Shift+q

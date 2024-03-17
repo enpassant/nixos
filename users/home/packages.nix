@@ -12,11 +12,12 @@ in {
     lazygit
     silver-searcher
     wl-clipboard xclip
+    wlogout
     gotop htop bottom
     mpc-cli pavucontrol
     aerc pandoc
     marksman
-    rofi-wayland bemoji
+    rofi-wayland
     libnotify
     mc
     exiftool
