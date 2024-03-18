@@ -2,7 +2,7 @@
 
 let
   palette = config.colorScheme.palette;
-  inherit (userSet) slickbar simplebar clock24h;
+  inherit (userSet) slickbar simplebar clock24h terminal;
   modulesSettings = {
       "hyprland/workspaces" = {
         #format = if simplebar == true then "{name}" else "{icon}";
@@ -67,15 +67,18 @@ let
       	interval = 5;
       	format = " {}%";
         tooltip = true;
+        on-click = "${terminal} -- btm";
       };
       "cpu" = {
       	interval = 5;
       	format = " {usage:2}%";
         tooltip = true;
+        on-click = "${terminal} -- btm";
       };
       "disk" = {
         format = " {free}";
         tooltip = true;
+        on-click = "${terminal} -- btm";
       };
       "network" = {
         format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
@@ -83,6 +86,7 @@ let
         format-wifi = "{icon} {signalStrength}%";
         format-disconnected = "󰤮";
         tooltip = false;
+        on-click = "${terminal} -- nmtui";
       };
       "tray" = {
         spacing = 12;

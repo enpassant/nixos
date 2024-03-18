@@ -84,12 +84,12 @@ in lib.mkIf (vm == "sway") {
       };
       window = {
         titlebar = false;
-        commands = [
-          {
-            command = "opacity set 0.95";
-            criteria = { title = ".*"; };
-          }
-        ];
+        # commands = [
+        #   {
+        #     command = "opacity set 0.95";
+        #     criteria = { title = ".*"; };
+        #   }
+        # ];
       };
     };
     extraConfig = ''
