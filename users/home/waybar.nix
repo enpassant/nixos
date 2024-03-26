@@ -73,12 +73,12 @@ let
       	interval = 5;
       	format = " {usage:2}%";
         tooltip = true;
-        on-click = "${terminal} -- btm";
+        on-click = "${terminal} -- htop";
       };
       "disk" = {
         format = " {free}";
         tooltip = true;
-        on-click = "${terminal} -- btm";
+        on-click = "${terminal} -- gotop";
       };
       "network" = {
         format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
