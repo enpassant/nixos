@@ -16,6 +16,7 @@ in lib.mkIf (vm == "sway") {
   in {
     enable = true;
     xwayland = true;
+    checkConfig = false;
     config = rec {
       inherit modifier;
       terminal = "foot";

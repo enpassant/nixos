@@ -25,7 +25,7 @@ in {
     keepassxc
     megasync
     teams-for-linux
-    remmina authy
+    remmina
     virtualbox qemu
     calibre
     font-awesome spotify swayidle swaylock
@@ -33,6 +33,6 @@ in {
     cmatrix
     brightnessctl
     vhs gum confetty slides graph-easy glow cowsay
-    zig zls
+    zig zls gnumake
   ];
 }
