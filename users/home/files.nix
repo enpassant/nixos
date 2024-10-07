@@ -33,6 +33,10 @@
     source = ./files/p110;
     recursive = true;
   };
+  home.file.".config/fastfetch" = {
+    source = ./files/fastfetch;
+    recursive = true;
+  };
   home.file.".config/waybar/config-hyprland".source = ./files/waybar/config-hyprland;
 }
 

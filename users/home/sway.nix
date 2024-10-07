@@ -94,6 +94,7 @@ in lib.mkIf (vm == "sway") {
       };
     };
     extraConfig = ''
+      bindsym ${modifier}+Control+l exec swaylock
       unbindsym ${modifier}+Shift+e
       bindsym ${modifier}+Shift+e exec wlogout
       bindsym ${modifier}+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
@@ -103,9 +104,9 @@ in lib.mkIf (vm == "sway") {
       bindsym ${modifier}+z exec ~/bin/toggle_sink_port.sh
       bindsym ${modifier}+Shift+w opacity plus 0.05
       bindsym ${modifier}+Shift+s opacity minus 0.05
-      bindsym Print               exec shotman -c output
-      bindsym Print+Shift         exec shotman -c region
-      bindsym Print+Shift+Control exec shotman -c window
+      bindsym Print               exec shotman -c output -C
+      bindsym Print+Shift         exec shotman -c region -C
+      bindsym Print+Shift+Control exec shotman -c window -C
 
       bindsym XF86AudioRaiseVolume exec pactl set-sink-volume ${defaultSink} +5%
       bindsym XF86AudioLowerVolume exec pactl set-sink-volume ${defaultSink} -5%

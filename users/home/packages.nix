@@ -6,7 +6,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
-    swaybg
+    swaybg shotman
     libsixel
     vim-full neovim nodejs-slim
     lazygit
@@ -22,6 +22,7 @@ in {
     mc
     exiftool
     jq file bat
+    tldr fastfetch
     keepassxc
     megasync
     teams-for-linux
@@ -34,5 +35,6 @@ in {
     brightnessctl
     vhs gum confetty slides graph-easy glow cowsay
     zig zls gnumake
+    obs-studio vlc
   ];
 }

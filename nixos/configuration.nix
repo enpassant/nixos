@@ -30,6 +30,10 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=alc283-headset,dell-headset-multi
+  '';
+
   networking.hostName = "${hostname}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -104,11 +108,12 @@ in {
   # };
 
   programs.dconf.enable = true;
-#  programs.hyprland = {
-#    enable = true;
-#    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-#    xwayland.enable = true;
-#  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  #   xwayland.enable = true;
+  # };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -217,8 +222,8 @@ in {
   system.stateVersion = "23.11"; # Did you read the comment?
 
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    # substituters = ["https://hyprland.cachix.org"];
+    # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     experimental-features = [ "nix-command" "flakes" ];
   };
 }
