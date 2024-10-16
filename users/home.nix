@@ -51,6 +51,7 @@ in {
     shellAliases = myAliases;
     bashrcExtra = ''
       source $HOME/.config/user-dirs.dirs
+      eval "$(atuin init bash)"
     '';
   };
 
@@ -60,6 +61,7 @@ in {
     initExtra = ''
       source $HOME/.config/user-dirs.dirs
       bindkey ^R history-incremental-pattern-search-backward
+      eval "$(atuin init zsh)"
     '';
   };
 
