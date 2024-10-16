@@ -298,6 +298,35 @@ in with lib; {
 	  transition: all 0.3s ease-in-out;
 	''}
       }
+      #workspaces button.focused {
+	${if slickbar == true then ''
+	  padding: 0px 5px;
+	  margin: 4px 3px;
+	  border-radius: 15px;
+	  border: 0px;
+	  color: #${palette.base00};
+	  background: linear-gradient(45deg, #${palette.base0D}, #${palette.base0E});
+	  opacity: 1.0;
+	  min-width: 40px;
+	  transition: all 0.3s ease-in-out;
+	'' else if simplebar == true then ''
+	  color: #${config.colorScheme.colors.base05};
+          background: transparent;
+	  opacity: 1.0;
+	  border: 0px;
+	  transition: all 0.3s ease-in-out;
+	'' else ''
+	  padding: 0px 5px;
+	  margin: 4px 3px;
+	  border-radius: 10px;
+	  border: 0px;
+	  color: #${palette.base00};
+	  background: linear-gradient(45deg, #${palette.base06}, #${palette.base0E});
+	  opacity: 1.0;
+	  min-width: 40px;
+	  transition: all 0.3s ease-in-out;
+	''}
+      }
       #workspaces button:hover {
 	${if slickbar == true then ''
 	  border-radius: 15px;
