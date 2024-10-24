@@ -78,25 +78,25 @@ in {
     wrapperFeatures.gtk = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
-      };
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+  #     };
+  #   };
+  # };
 
-  environment.etc."greetd/environments".text = ''
-    sway
-    Hyprland
-  '';
+  # environment.etc."greetd/environments".text = ''
+  #   sway
+  #   Hyprland
+  # '';
   
   # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   # services.xserver.displayManager.defaultSession = "${vm}";
 
   services.xserver.desktopManager.gnome.enable = true;
