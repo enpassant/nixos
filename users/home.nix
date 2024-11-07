@@ -23,6 +23,7 @@ in {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = 1;
       EDITOR = "${editor}";
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
     keyboard = {
       layout = "${theKBDLayout}";
