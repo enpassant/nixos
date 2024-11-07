@@ -34,6 +34,10 @@ in lib.mkIf (vm == "sway") {
         };
       };
       startup = [
+        {
+          command ="swayidle -w timeout 5 'if pgrep -x swaylock; then swaymsg \"output * power off\"; fi' resume 'swaymsg \"output * power on\"'";
+          always = true;
+        }
       ];
       bars = [
         {
