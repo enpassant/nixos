@@ -6,7 +6,7 @@ with import <nixpkgs> {};
 
       src = pkgs.fetchgit {
         url = "https://github.com/almottier/TapoP100.git";
-        sha256 = "5YeRl7dbkv1RsWOcIdH67a/M1fjq9WXo4uTFiKLNys8=";
+        sha256 = "lEoRDViiLYB/Rl3upqSSpFe2G2zXH4Z4oqW4sO9npb4=";
       };
 
       doCheck = false;

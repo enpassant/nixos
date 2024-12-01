@@ -93,7 +93,7 @@ in {
   # '';
   
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
@@ -126,7 +126,7 @@ in {
   services.printing.enable = true;
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
@@ -155,7 +155,7 @@ in {
   users.users."${username}" = {
     isNormalUser = true;
     description = "${displayUsername}";
-    extraGroups = [ "networkmanager" "wheel" "polkituser" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "polkituser" "audio" "podman" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];
@@ -173,6 +173,8 @@ in {
     mc
     pulseaudio
     openvpn
+    wireguard-tools
+    podman-compose
     home-manager
   ] ++ (if libreOffice == true then
     [
@@ -212,6 +214,21 @@ in {
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 3000 8080 9090 9999 ];
+    allowedUDPPortRanges = [
+      { from = 51820; to = 51820; }
+    ];
+  };
+
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
