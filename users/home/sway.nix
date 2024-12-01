@@ -106,6 +106,7 @@ in lib.mkIf (vm == "sway") {
       unbindsym ${modifier}+Shift+q
       bindsym ${modifier}+q kill
       bindsym ${modifier}+z exec ~/bin/toggle_sink_port.sh
+      bindsym ${modifier}+t exec ~/bin/toggle_input_sinks.sh
       bindsym ${modifier}+Shift+w opacity plus 0.05
       bindsym ${modifier}+Shift+s opacity minus 0.05
       bindsym Print               exec shotman -c output -C

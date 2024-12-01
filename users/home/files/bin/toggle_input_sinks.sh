@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-mapfile -t values < <(pacmd list-sink-inputs | grep -oP '(index: \K[0-9]+)')
+IFS=$'\n' values=($(pactl list sink-inputs | grep -oP '\K[0-9]+(?=. nyelő)'))
 for i in ${!values[@]}; do
     `pactl set-sink-input-mute ${values[i]} toggle`
 done
