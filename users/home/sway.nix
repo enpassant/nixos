@@ -32,6 +32,14 @@ in lib.mkIf (vm == "sway") {
         "Virtual-1" = {
           mode = "1920x1080@60Hz";
         };
+        "eDP-1" = {
+          pos = "0 0";
+          mode = "1920x1080@60Hz";
+        };
+        "HDMI-A-1" = {
+          pos = "1920 0";
+          mode = "1920x1080@60Hz";
+        };
       };
       startup = [
         {
