@@ -68,7 +68,7 @@ in {
   # services.xserver.enable = true;
 
   security.polkit.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   security.pki.certificateFiles = [ ./files/lets-encrypt-r3.pem ];
 
@@ -205,6 +205,31 @@ in {
 
   # List services that you want to enable:
 
+  services.minidlna.enable = true;
+  services.minidlna.settings = {
+    friendly_name = "NixOS-DLNA";
+
+    #     https://mylinuxramblings.wordpress.com/2016/02/19/mini-how-to-installing-minidlna-in-ubuntu/
+    #    "A" for audio    (eg. media_dir=A,/var/lib/minidlna/music)
+    #    "P" for pictures (eg. media_dir=P,/var/lib/minidlna/pictures)
+    #    "V" for video    (eg. media_dir=V,/var/lib/minidlna/videos)
+    #    "PV" for pictures and video (eg. media_dir=PV,/var/lib/minidlna/digital_camera)
+
+    media_dir = [
+      "PV,/media/data/user/mm/Pictures" # Music files are located here
+      "A,/media/data/user/mm/mp3" # Audio files are here
+      "PV,/media/data/user/mm/video" # Music files are located here
+    ];
+ 
+    inotify = "yes";
+    log_level = "error";
+  };
+
+  users.users.minidlna = {
+    extraGroups =
+      [ "users" "samba" "wheel" ]; # so minidlna can access the files.
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
@@ -215,10 +240,8 @@ in {
   # networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 3000 8080 9090 9999 ];
-    allowedUDPPortRanges = [
-      { from = 51820; to = 51820; }
-    ];
+    allowedTCPPorts = [ 3000 8080 9090 9999 8200 ];
+    allowedUDPPorts = [ 1900 51820 ];
   };
 
   virtualisation.containers.enable = true;
