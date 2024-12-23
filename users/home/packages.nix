@@ -35,6 +35,7 @@ in {
     brightnessctl
     vhs gum confetty slides graph-easy glow cowsay
     zig zls gnumake
+    gleam erlang rebar3 inotify-tools
     obs-studio vlc
   ];
 }
