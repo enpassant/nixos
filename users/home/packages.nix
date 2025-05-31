@@ -6,6 +6,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    ghostty chafa
     swaybg shotman
     libsixel
     vim-full neovim nodejs-slim
@@ -34,6 +35,7 @@ in {
     cmatrix
     brightnessctl
     vhs gum confetty slides graph-easy glow cowsay
+    tmuxp
     zig zls gnumake
     gleam erlang rebar3 inotify-tools
     obs-studio vlc

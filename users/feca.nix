@@ -21,7 +21,8 @@ in {
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  terminal = "foot"; # This sets the terminal that is used by the hyprland terminal keybinding
+  terminal = "foot"; 
+  # terminal = "ghostty";
   vm = "sway";
   # vm = "hyprland";
 
@@ -75,6 +76,7 @@ in {
   alacritty = true;
   foot = true;
   kitty = true;
+  ghostty = true;
 
   # Enable Python & PyCharm
   python = false;

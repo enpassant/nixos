@@ -15,6 +15,10 @@ image() {
             else
                 img2sixel -w "$width" "$1"
             fi
+            # chafa -c full -f kitty "$1" </dev/null >/dev/tty
+            # chafa -c 16 --clear -s ${2}x${3} "${1}"
+            # chafa -c full -f symbols "$1" </dev/null >/dev/tty
+            # kitty +kitten icat --stdin no --clear --transfer-mode memory --place "${2}x${3}@${4}x${5}" "$1" </dev/null >/dev/tty
 	else
             exiftool "$1"
 	fi
