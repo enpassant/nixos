@@ -8,7 +8,7 @@ let
   myAliases = {
     ho-rebuild="home-manager switch --flake ${flakeDir}";
     no-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
-    no-update="sudo nix flake update ${flakeDir}";
+    no-update="sudo nix flake update --flake ${flakeDir}";
     gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     ll = "ls -alh";
     ".." = "cd ..";

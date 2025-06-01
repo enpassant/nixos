@@ -121,9 +121,9 @@ in lib.mkIf (vm == "sway") {
       bindsym Print+Shift         exec shotman -c region -C
       bindsym Print+Shift+Control exec shotman -c window -C
 
-      bindsym XF86AudioRaiseVolume exec pactl set-sink-volume ${defaultSink} +5%
-      bindsym XF86AudioLowerVolume exec pactl set-sink-volume ${defaultSink} -5%
-      bindsym XF86AudioMute exec  pactl set-sink-mute ${defaultSink} toggle
+      bindsym XF86AudioRaiseVolume exec pactl set-sink-volume `pactl get-default-sink` +5%
+      bindsym XF86AudioLowerVolume exec pactl set-sink-volume `pactl get-default-sink` -5%
+      bindsym XF86AudioMute exec  pactl set-sink-mute `pactl get-default-sink` toggle
       bindsym XF86AudioPlay exec  mpc toggle
       bindsym XF86AudioPause exec  mpc toggle
       bindsym XF86AudioNext exec  mpc next
