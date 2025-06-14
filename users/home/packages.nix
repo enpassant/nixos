@@ -25,7 +25,6 @@ in {
     jq file bat
     tldr fastfetch
     keepassxc
-    megasync
     teams-for-linux
     remmina
     virtualbox qemu

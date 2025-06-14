@@ -4,10 +4,12 @@
   imports = [
     ./alacritty.nix
     ./foot.nix
+    ./gc.nix
     ./hyprland.nix
     ./kitty.nix
     ./lf.nix
     ./mako.nix
+    ./megasync.nix
     ./mpd.nix
     ./ncmpcpp.nix
     ./packages.nix
