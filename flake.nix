@@ -52,6 +52,15 @@
         };
         modules = [ nixos/configuration.nix ];
       };
+      blitzwolf = lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+          sysSet = (import ./system/blitzwolf.nix) //
+            (import ./system/nixos.nix);
+        };
+        modules = [ nixos/configuration.nix ];
+      };
       nixos-vm = lib.nixosSystem {
         specialArgs = {
           inherit system;
@@ -68,6 +77,15 @@
         extraSpecialArgs = {
           inherit inputs;
           userSet = import ./users/feca.nix;
+        };
+        modules = [ ./users/home.nix ];
+      };
+      feca-bw = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+          userSet = (import ./users/feca.nix) //
+          (import ./users/blitzwolf.nix);
         };
         modules = [ ./users/home.nix ];
       };

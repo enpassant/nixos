@@ -6,7 +6,7 @@ let
     userHome
     browser cpuType gpuType vm theme
     wallpaperDir borderAnim
-    defaultSink
+    toggleScript
     theKBDLayout terminal
     theKBDVariant
     theKBDOptions sdl-videodriver;
@@ -145,7 +145,7 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
-      bind = ${modifier},Z,exec, ~/bin/toggle_sink_port.sh
+      bind = ${modifier},Z,exec, ~/bin/${toggleScript}
       bind = ${modifier}SHIFT,F,togglefloating,
       bind = ${modifier}SHIFT,C,exit,
       bind = ${modifier}SHIFT,left,movewindow,l
@@ -192,9 +192,9 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bindm = ${modifier},mouse:273,resizewindow
       bind = ALT,Tab,cyclenext
       bind = ALT,Tab,bringactivetotop
-      bind = ,XF86AudioRaiseVolume,exec,pactl set-sink-volume ${defaultSink} +5%
-      bind = ,XF86AudioLowerVolume,exec,pactl set-sink-volume ${defaultSink} -5%
-      bind = ,XF86AudioMute, exec, pactl set-sink-mute ${defaultSink} toggle
+      bind = ,XF86AudioRaiseVolume,exec,pactl set-sink-volume `pactl get-default-sink` +5%
+      bind = ,XF86AudioLowerVolume,exec,pactl set-sink-volume `pactl get-default-sink` -5%
+      bind = ,XF86AudioMute, exec, pactl set-sink-mute `pactl get-default-sink` toggle
       bind = ,XF86AudioPlay, exec, mpc toggle
       bind = ,XF86AudioPause, exec, mpc toggle
       bind = ,XF86AudioNext, exec, mpc next
@@ -207,7 +207,7 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ,XF86Search, exec, ${terminal} -- lf ~
       bind = ,XF86Explorer, exec, ${browser}
 
-      bind = ${modifier},z,exec,~/bin/toggle_sink_port.sh
+      bind = ${modifier},z,exec,~/bin/${toggleScript}
 
       bind = ${modifier},M,exec, ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
       bind = ${modifier},M,submap,modes
@@ -227,14 +227,14 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
       bind = ,N,exec,${terminal} -- ncmpcpp
       bind = ,H,exec, mpc prev
       bind = ,L,exec, mpc next
-      bind = ,K,exec, pactl set-sink-volume ${defaultSink} +5%
-      bind = ,J,exec, pactl set-sink-volume ${defaultSink} -5%
-      bind = ,M,exec, pactl set-sink-mute ${defaultSink} toggle
+      bind = ,K,exec, pactl set-sink-volume `pactl get-default-sink` +5%
+      bind = ,J,exec, pactl set-sink-volume `pactl get-default-sink` -5%
+      bind = ,M,exec, pactl set-sink-mute `pactl get-default-sink` toggle
       bind = ,F,exec, mpc seek +10
       bind = ,B,exec, mpc seek -10
       bind = ,P,exec, mpc toggle
       bind = ,S,exec, mpc stop
-      bind = ,Z,exec, ~/bin/toggle_sink_port.sh
+      bind = ,Z,exec, ~/bin/${toggleScript}
       bind = ,Escape,exec, ~/bin/hide-app-noti.sh Sway-mode
       bind = ,Escape,submap,reset
       bind = ,Return,exec, ~/bin/hide-app-noti.sh Sway-mode

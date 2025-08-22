@@ -2,11 +2,11 @@
 let
   inherit (userSet)
     username userHome editor
-    browser flakeDir theme
+    browser flakeDir flakeUser theme
     theKBDLayout theKBDVariant theKBDOptions;
 
   myAliases = {
-    ho-rebuild="home-manager switch --flake ${flakeDir}";
+    ho-rebuild="home-manager switch --flake ${flakeDir}#${username}${flakeUser}";
     no-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
     no-update="sudo nix flake update --flake ${flakeDir}";
     gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";

@@ -27,8 +27,8 @@ in {
   # vm = "hyprland";
 
   # System Settings
-  #defaultSink = "@DEFAULT_AUDIO_SINK@";
-  defaultSink = "alsa_output.pci-0000_00_1b.0.analog-stereo";
+  toggleScript="toggle_input_sinks.sh";
+  flakeUser="";
   clock24h = true;
   theLocale = "hu_HU.UTF-8";
   theKBDLayout = "us";

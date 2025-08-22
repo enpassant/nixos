@@ -7,7 +7,7 @@ let
     browser cpuType gpuType vm
     wallpaperDir borderAnim
     terminal
-    defaultSink
+    toggleScript
     theKBDLayout theKBDVariant theKBDOptions
     sdl-videodriver;
 in lib.mkIf (vm == "sway") {
@@ -69,14 +69,14 @@ in lib.mkIf (vm == "sway") {
           n = "exec ${terminal} -- ncmpcpp";
           h = "exec mpc prev";
           l = "exec mpc next";
-          k = "exec pactl set-sink-volume ${defaultSink} +5%";
-          j = "exec pactl set-sink-volume ${defaultSink} -5%";
-          m = "exec pactl set-sink-mute ${defaultSink} toggle";
+          k = "exec pactl set-sink-volume `pactl get-default-sink` +5%";
+          j = "exec pactl set-sink-volume `pactl get-default-sink` -5%";
+          m = "exec pactl set-sink-mute `pactl get-default-sink` toggle";
           f = "exec mpc seek +10";
           b = "exec mpc seek -10";
           p = "exec mpc toggle";
           s = "exec mpc stop";
-          z = "exec ~/bin/toggle_sink_port.sh";
+          z = "exec ~/bin/${toggleScript}";
         };
         resize = {
           Escape = "mode default; exec sh ~/bin/hide-app-noti.sh Sway-mode";
@@ -113,7 +113,7 @@ in lib.mkIf (vm == "sway") {
       unbindsym ${modifier}+r
       unbindsym ${modifier}+Shift+q
       bindsym ${modifier}+q kill
-      bindsym ${modifier}+z exec ~/bin/toggle_sink_port.sh
+      bindsym ${modifier}+z exec ~/bin/${toggleScript}
       bindsym ${modifier}+t exec ~/bin/toggle_input_sinks.sh
       bindsym ${modifier}+Shift+w opacity plus 0.05
       bindsym ${modifier}+Shift+s opacity minus 0.05

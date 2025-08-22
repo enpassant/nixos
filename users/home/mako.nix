@@ -5,10 +5,10 @@ let
 in {
   services.mako = {
     enable = false;
-    defaultTimeout = 10000;
-    icons = true;
-    height = 400;
     settings = {
+      default-timeout = 10000;
+      icons = true;
+      height = 400;
       "urgency=low" = {
         background-color="#268026FF";
       };
