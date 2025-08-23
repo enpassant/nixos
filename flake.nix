@@ -2,8 +2,8 @@
   description = "My first flake NixOS install";
 
   inputs = {
-    # nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -14,14 +14,20 @@
     # };
   };
 
-  outputs = inputs@{self, nixpkgs, home-manager, ...}:
+  outputs = inputs@{self, nixpkgs, nixpkgs-unstable, home-manager, ...}:
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config = {
-	    allowUnfree = true;
+  	    allowUnfree = true;
+      };
+    };
+    pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config = {
+  	    allowUnfree = true;
       };
     };
   in {
@@ -76,6 +82,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs;
+          inherit pkgs-unstable;
           userSet = import ./users/feca.nix;
         };
         modules = [ ./users/home.nix ];
@@ -84,6 +91,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs;
+          inherit pkgs-unstable;
           userSet = (import ./users/feca.nix) //
           (import ./users/blitzwolf.nix);
         };

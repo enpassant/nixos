@@ -1,4 +1,4 @@
-{ pkgs, config, username, userSet, ... }:
+{ pkgs, pkgs-unstable, config, username, userSet, ... }:
 
 let
   inherit (userSet) browser flakeDir;
@@ -37,6 +37,8 @@ in {
     tmuxp
     zig zls gnumake
     gleam erlang rebar3 inotify-tools
+    pkgs-unstable.roc
     obs-studio vlc
+    yt-dlp
   ];
 }

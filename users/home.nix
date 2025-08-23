@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, userSet, ... }:
+{ config, pkgs, pkgs-unstable, inputs, lib, userSet, ... }:
 let
   inherit (userSet)
     username userHome editor
@@ -59,7 +59,7 @@ in {
   programs.zsh = {
     enable = true;
     shellAliases = myAliases;
-    initExtra = ''
+    initContent = ''
       source $HOME/.config/user-dirs.dirs
       bindkey ^R history-incremental-pattern-search-backward
       eval "$(atuin init zsh)"
