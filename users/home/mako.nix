@@ -4,7 +4,7 @@ let
   inherit (userSet) slickbar simplebar clock24h;
 in {
   services.mako = {
-    enable = false;
+    enable = true;
     settings = {
       default-timeout = 10000;
       icons = true;
