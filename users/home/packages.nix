@@ -40,5 +40,6 @@ in {
     pkgs-unstable.roc
     obs-studio vlc
     yt-dlp
+    xournalpp
   ];
 }
