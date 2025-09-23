@@ -112,6 +112,7 @@ in lib.mkIf (vm == "sway") {
       bindsym ${modifier}+m mode modes; exec sh ~/bin/show-app-noti.sh "Sway-mode" "Modes mode" "r - resize\nm - music\nESC - exit to normal mode\nENTER - exit to normal mode"
       unbindsym ${modifier}+r
       unbindsym ${modifier}+Shift+q
+      bindsym ${modifier}+period input type:keyboard xkb_switch_layout next
       bindsym ${modifier}+q kill
       bindsym ${modifier}+z exec ~/bin/${toggleScript}
       bindsym ${modifier}+t exec ~/bin/toggle_input_sinks.sh

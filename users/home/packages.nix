@@ -41,5 +41,6 @@ in {
     obs-studio vlc
     yt-dlp
     xournalpp
+    texliveFull
   ];
 }

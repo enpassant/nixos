@@ -31,7 +31,7 @@ in {
   flakeUser="";
   clock24h = true;
   theLocale = "hu_HU.UTF-8";
-  theKBDLayout = "us";
+  theKBDLayout = "us,hu(oldhunlig)";
   theKBDVariant = "altgr-intl";
   theKBDOptions = "compose:sclk";
   theLCVariables = "hu_HU.UTF-8";
