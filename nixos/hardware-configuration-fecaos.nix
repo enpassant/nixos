@@ -42,4 +42,31 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+#  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+#  services.udev.extraRules = ''
+#    # Remove NVIDIA devices on add
+#    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{power/control}="auto", ATTR{remove}="1"
+#  '';
+
+  nixpkgs.config.allowUnfree = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = false;
+
+#  environment.variables = {
+#    MESA_LOADER_DRIVER_OVERRIDE = "i965";
+#  };
+
+    environment.sessionVariables.GSK_RENDERER = "cairo";
+      
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      # your Open GL, Vulkan and VAAPI drivers
+      # vpl-gpu-rt          # for newer GPUs on NixOS >24.05 or unstable
+      # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+ #     intel-media-sdk   # for older GPUs
+        mesa
+    ];
+  };
 }
