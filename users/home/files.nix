@@ -38,5 +38,6 @@
     recursive = true;
   };
   home.file.".config/waybar/config-hyprland".source = ./files/waybar/config-hyprland;
+  home.file.".config/niri/config.kdl".source = ./files/niri/config.kdl;
 }
 
