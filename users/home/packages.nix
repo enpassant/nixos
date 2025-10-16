@@ -42,5 +42,8 @@ in {
     yt-dlp
     xournalpp
     texliveFull
+    duckdb
+    xwayland-satellite
+    xdg-desktop-portal-gnome
   ];
 }

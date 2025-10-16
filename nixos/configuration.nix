@@ -99,6 +99,9 @@ in {
   };
   # services.xserver.displayManager.defaultSession = "${vm}";
 
+  programs.niri.enable = true;
+  services.displayManager.sessionPackages = [ pkgs.niri ];
+
   services.xserver.desktopManager.gnome.enable = true;
   # xdg.portal = {
   #   enable = true;
