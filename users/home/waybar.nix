@@ -112,9 +112,17 @@ let
       };
       "custom/themeselector" = {
         tooltip = false;
-        format = "";
-        # exec = "theme-selector";
-        on-click = "sleep 0.1 && theme-selector";
+        format = "{icon}";
+        format-icons = {
+          "'prefer-dark'" = "🌒";
+          "'prefer-light'" = "☀️";
+        };
+        exec = "sh ~/bin/color-scheme-get.sh";
+        exec-on-click = true;
+        return-type = "json";
+        on-click = "sh ~/bin/color-scheme.sh";
+        on-click-right = "wlogout";
+        interval = 60;
       };
       "custom/startmenu" = {
         tooltip = false;

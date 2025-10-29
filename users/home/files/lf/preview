@@ -1,9 +1,8 @@
 #!/bin/sh
-CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
-	-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
-
 image() {
 	if ! test -f /tmp/text-preview && [ -n "$WAYLAND_DISPLAY" ]; then
+		case "$TERM" in
+			xterm-256color)
             iw=$(exiftool -s3 -ImageWidth "$1")
             ih=$(exiftool -s3 -ImageHeight "$1")
             width=$(($2*11))
@@ -18,7 +17,17 @@ image() {
             # chafa -c full -f kitty "$1" </dev/null >/dev/tty
             # chafa -c 16 --clear -s ${2}x${3} "${1}"
             # chafa -c full -f symbols "$1" </dev/null >/dev/tty
-            # kitty +kitten icat --stdin no --clear --transfer-mode memory --place "${2}x${3}@${4}x${5}" "$1" </dev/null >/dev/tty
+      	;;
+      *)
+        if [ "$2$3" = "" ]; then
+	        chafa -c full -f kitty "$1" </dev/null >/dev/tty
+	      else
+	      	IMGID=$(uuidgen)
+	        # chafa -s "${2}x${3}" "$1" </dev/null >/dev/tty
+        	setsid kitten icat --clear --silent --stdin no --transfer-mode memory --place "${2}x${3}@${4}x${5}" "$1" <<<"i=$IMGID" </dev/null >/dev/tty
+	    	fi
+        ;;
+		esac    
 	else
             exiftool "$1"
 	fi
@@ -69,18 +78,30 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 		exiftool "$1"
 		;;
 	*.pdf)
+		CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+			-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
 		[ ! -f "${CACHE}.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE"
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;
 	*.epub)
+		CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+			-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
 		[ ! -f "$CACHE" ] && epub-thumbnailer "$1" "$CACHE" 1024
 		image "$CACHE" "$2" "$3" "$4" "$5"
 		;;
 	*.cbz|*.cbr|*.cbt)
+		CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+			-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
 		[ ! -f "$CACHE" ] && comicthumb "$1" "$CACHE" 1024
 		image "$CACHE" "$2" "$3" "$4" "$5"
 		;;
 	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx)
+		CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+			-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
 		[ ! -f "${CACHE}.jpg" ] && \
 			ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
@@ -89,6 +110,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 		image "$1" "$2" "$3" "$4" "$5"
 		;;
 	*.svg)
+		CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+			-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
 		[ ! -f "${CACHE}.jpg" ] && convert "$1" "${CACHE}.jpg"
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;

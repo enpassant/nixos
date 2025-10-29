@@ -21,8 +21,8 @@ in {
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  terminal = "foot"; 
-  # terminal = "ghostty";
+  terminal = "ghostty";
+  terminal2 = "foot";
   vm = "sway";
   # vm = "hyprland";
 

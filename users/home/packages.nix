@@ -45,5 +45,6 @@ in {
     duckdb
     xwayland-satellite
     xdg-desktop-portal-gnome
+    blesh
   ];
 }

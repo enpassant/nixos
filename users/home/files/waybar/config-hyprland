@@ -58,9 +58,14 @@
       "tooltip": false
     },
     "custom/themeselector": {
-      "format": "",
-      "on-click": "sleep 0.1 && theme-selector",
-      "tooltip": false
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "'prefer-dark'": "🌒",
+        "'prefer-light'": "☀️"
+      },
+      "exec": "echo `gsettings get org.gnome.desktop.interface color-scheme`",
+      "on-click": "sh ~/bin/color-scheme.sh",
     },
     "disk": {
       "format": " {free}",

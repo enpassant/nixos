@@ -39,6 +39,8 @@ in {
     };
   };
 
+  gtk.colorScheme = "dark";
+
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
 
   imports = [
@@ -51,10 +53,14 @@ in {
     enable = true;
     shellAliases = myAliases;
     bashrcExtra = ''
+      [[ $- == *i* ]] && source -- "$(blesh-share)"/ble.sh --attach=none
       source $HOME/.config/user-dirs.dirs
       eval "$(atuin init bash)"
+      [[ ! ''${BLE_VERSION-} ]] || ble-attach
     '';
   };
+
+  # programs.blesh.enable = true;
 
   programs.zsh = {
     enable = true;

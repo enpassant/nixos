@@ -6,6 +6,9 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
+
+// include "first.kdl"
+
 input {
     keyboard {
         xkb {
@@ -116,7 +119,7 @@ output "HDMI-A-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@60"
+    mode "1920x1080"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -430,6 +433,14 @@ animations {
     open-floating true
 }
 
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"MEGAsync$"#
+    open-floating true
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
@@ -459,6 +470,7 @@ window-rule {
     match app-id="Calculator"
     match app-id="Nautilus"
     match app-id="Weather"
+    match app-id="Remmina"
     
     default-column-width { proportion 0.5; }
     open-maximized false
@@ -486,8 +498,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -760,3 +772,5 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+// include "last.kdl"
