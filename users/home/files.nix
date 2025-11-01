@@ -1,6 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, config, userSet, ... }:
 
-{
+let
+  inherit (userSet)
+    flakeUser;
+in {
   # Place Files Inside Home Directory
   # home.file.".emoji".source = ./files/emoji;
   home.file.".vimrc".source = ./files/.vimrc;
@@ -38,6 +41,6 @@
     recursive = true;
   };
   home.file.".config/waybar/config-hyprland".source = ./files/waybar/config-hyprland;
-  home.file.".config/niri/config.kdl".source = ./files/niri/config.kdl;
+  # home.file.".config/niri/config.kdl".source = ./files/niri/config${flakeUser}.kdl;
 }
 

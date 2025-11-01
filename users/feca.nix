@@ -31,9 +31,10 @@ in {
   flakeUser="";
   clock24h = true;
   theLocale = "hu_HU.UTF-8";
-  theKBDLayout = "hu,hu(oldhunlig)";
-  theKBDVariant = "us";
-  theKBDOptions = "compose:sclk";
+  theKBDLayout = "hu,hu(us),hu(oldhunlig)";
+  # theKBDVariant = "us";
+  theKBDVariant = "";
+  theKBDOptions = "grp:win_space_toggle,compose:sclk";
   theLCVariables = "hu_HU.UTF-8";
   theTimezone = "Europe/Budapest";
   theShell = "zsh"; # Possible options: bash, zsh

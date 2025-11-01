@@ -11,6 +11,7 @@
     ./mako.nix
     ./megasync.nix
     ./mpd.nix
+    ./niri.nix
     ./ncmpcpp.nix
     ./packages.nix
     ./rofi.nix
