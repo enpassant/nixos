@@ -68,18 +68,18 @@ let
       	interval = 5;
       	format = " {}%";
         tooltip = true;
-        on-click = "${terminal} -- btm";
+        on-click = "${terminal} -e btm";
       };
       "cpu" = {
       	interval = 5;
       	format = " {usage:2}%";
         tooltip = true;
-        on-click = "${terminal} -- htop";
+        on-click = "${terminal} -e htop";
       };
       "disk" = {
         format = " {free}";
         tooltip = true;
-        on-click = "${terminal} -- gotop";
+        on-click = "${terminal} -e gotop";
       };
       "network" = {
         format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
@@ -87,7 +87,7 @@ let
         format-wifi = "{icon} {signalStrength}%";
         format-disconnected = "󰤮";
         tooltip = false;
-        on-click = "${terminal} -- nmtui";
+        on-click = "${terminal} -e nmtui";
       };
       "tray" = {
         spacing = 12;
