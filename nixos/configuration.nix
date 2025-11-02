@@ -256,7 +256,7 @@ BrowseProtocols all
   # networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 3000 8080 9090 9999 8200 ];
+    allowedTCPPorts = [ 3000 1080 1443 8080 9090 9999 8200 ];
     allowedUDPPorts = [ 1900 51820 ];
   };
 
