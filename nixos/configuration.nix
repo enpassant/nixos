@@ -175,6 +175,14 @@ BrowseProtocols all
     packages = with pkgs; [
     ];
   };
+  users.users."peter" = {
+    isNormalUser = true;
+    description = "Kálmán Péter";
+    extraGroups = [ "networkmanager" "wheel" "polkituser" "audio" "podman" ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+    ];
+  };
   users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.allowUnfree = true;
@@ -182,6 +190,7 @@ BrowseProtocols all
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    lf
     helix
     tmux
     git

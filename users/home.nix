@@ -46,7 +46,7 @@ in {
   imports = [
     inputs.nix-colors.homeManagerModules.default
     # inputs.hyprland.homeManagerModules.default
-    ./home
+    ./home/${username}
   ];
 
   programs.bash = {

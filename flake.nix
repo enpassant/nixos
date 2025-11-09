@@ -97,6 +97,15 @@
         };
         modules = [ ./users/home.nix ];
       };
+      peter = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit pkgs-unstable;
+          userSet = import ./users/peter.nix;
+        };
+        modules = [ ./users/home.nix ];
+      };
     };
   };
 }
