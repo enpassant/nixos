@@ -1,5 +1,5 @@
 let
-  toggleScript="bw_toggle_sink.sh";
+  toggleScript="bw_toggle_sink_hdmi.sh";
 in {
   # User Variables
   inherit toggleScript;

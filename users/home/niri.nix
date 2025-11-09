@@ -2,6 +2,7 @@
 
 let
   inherit (userSet)
+    toggleScript
     theKBDLayout theKBDOptions;
 in {
     home.file.".config/niri/config.kdl".text = ''
@@ -127,7 +128,8 @@ in {
             // for the resolution.
             // If the mode is omitted altogether or is invalid, niri will pick one automatically.
             // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-            mode "1920x1080"
+            // mode "1920x1080"
+            mode "3840x2160"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
             scale 1
@@ -524,7 +526,7 @@ in {
             XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
             XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-            Mod+Z allow-when-locked=true { spawn-sh "~/bin/bw_toggle_sink.sh"; }
+            Mod+Z allow-when-locked=true { spawn-sh "~/bin/${toggleScript}"; }
 
             XF86AudioPlay allow-when-locked=true { spawn-sh "mpc toggle"; }
             XF86AudioPause allow-when-locked=true { spawn-sh "mpc toggle"; }
