@@ -6,6 +6,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    gnupg pinentry-all
     ghostty chafa
     swaybg shotman
     libsixel
