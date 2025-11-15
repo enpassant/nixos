@@ -357,7 +357,7 @@ in {
 
         spawn-at-startup "xdg-desktop-portal-gnome"
 
-        spawn-sh-at-startup "swaybg -i ~/wallpapers/aniket-deole-M6XC789HLe8-unsplash.jpg -m fill &>/dev/null"
+        spawn-sh-at-startup "swaybg -i ~/wallpapers/pexels-quang-nguyen-vinh-4K.jpg -m fill &>/dev/null"
  
         spawn-sh-at-startup "swayidle -w timeout 5 'if pgrep -c swaylock; then niri msg action power-off-monitors; fi' resume 'niri msg action power-on-monitors'";
 
@@ -467,10 +467,11 @@ in {
         window-rule {
             geometry-corner-radius 12
             clip-to-geometry true
+            default-column-width { fixed 1920; }
         }
 
         // Set open-maximized to true for all windows.
-        window-rule {
+        /-window-rule {
             open-maximized true
         }
 
