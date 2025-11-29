@@ -258,6 +258,17 @@ BrowseProtocols all
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  services.openssh = {
+    enable = true;
+    ports = [ 3922 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "feca" ];
+    };
+  };
+  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
