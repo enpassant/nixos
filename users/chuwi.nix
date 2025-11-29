@@ -1,16 +1,16 @@
 let
-  toggleScript="bw_toggle_sink_hdmi.sh";
+  toggleScript="chuwi_toggle_sink_hdmi.sh";
 in {
   # User Variables
   inherit toggleScript;
-  flakeUser="-bw";
+  flakeUser="-chuwi";
   theKBDLayout = "hu(us),hu(oldhunlig)";
   theKBDVariant = "";
   theKBDOptions = "grp:win_space_toggle,compose:sclk";
-  monitor1Name = "HDMI-A-1";
+  monitor1Name = "DP-1";
   monitor1Mode = "3840x2160";
   monitor1PositionX = "0";
-  monitor2Name = "HDMI-A-2";
+  monitor2Name = "HDMI-A-1";
   monitor2Mode = "1920x1080";
   monitor2PositionX = "3840";
 }

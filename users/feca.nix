@@ -81,4 +81,11 @@ in {
 
   # Enable Python & PyCharm
   python = false;
+  
+  monitor1Name = "HDMI-A-1";
+  monitor1Mode = "1920x1080";
+  monitor1PositionX = "0";
+  monitor2Name = "HDMI-A-2";
+  monitor2Mode = "1920x1080";
+  monitor2PositionX = "1920";
 }

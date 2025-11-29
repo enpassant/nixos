@@ -67,6 +67,15 @@
         };
         modules = [ nixos/configuration.nix ];
       };
+      chuwi = lib.nixosSystem {
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+          sysSet = (import ./system/chuwi.nix) //
+            (import ./system/nixos.nix);
+        };
+        modules = [ nixos/configuration.nix ];
+      };
       nixos-vm = lib.nixosSystem {
         specialArgs = {
           inherit system;
@@ -94,6 +103,16 @@
           inherit pkgs-unstable;
           userSet = (import ./users/feca.nix) //
           (import ./users/blitzwolf.nix);
+        };
+        modules = [ ./users/home.nix ];
+      };
+      feca-chuwi = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit pkgs-unstable;
+          userSet = (import ./users/feca.nix) //
+          (import ./users/chuwi.nix);
         };
         modules = [ ./users/home.nix ];
       };

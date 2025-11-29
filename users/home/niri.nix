@@ -3,7 +3,9 @@
 let
   inherit (userSet)
     toggleScript
-    theKBDLayout theKBDOptions;
+    theKBDLayout theKBDOptions
+    monitor1Name monitor1Mode monitor1PositionX
+    monitor2Name monitor2Mode monitor2PositionX;
 in {
     home.file.".config/niri/config.kdl".text = ''
         // This config is in the KDL format: https://kdl.dev
@@ -118,7 +120,7 @@ in {
             position x=1920 y=0
         }
 
-        output "HDMI-A-1" {
+        output "${monitor1Name}" {
             // Uncomment this line to disable this output.
             // off
 
@@ -129,7 +131,7 @@ in {
             // If the mode is omitted altogether or is invalid, niri will pick one automatically.
             // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
             // mode "1920x1080"
-            mode "3840x2160"
+            mode "${monitor1Mode}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
             scale 1
@@ -147,10 +149,10 @@ in {
             // so to put another output directly adjacent to it on the right, set its x to 1920.
             // If the position is unset or results in an overlap, the output is instead placed
             // automatically.
-            position x=0 y=0
+            position x=${monitor1PositionX} y=0
         }
 
-        output "HDMI-A-2" {
+        output "${monitor2Name}" {
             // Uncomment this line to disable this output.
             // off
 
@@ -160,7 +162,7 @@ in {
             // for the resolution.
             // If the mode is omitted altogether or is invalid, niri will pick one automatically.
             // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-            mode "1920x1080@60"
+            mode "${monitor2Mode}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
             scale 1
@@ -178,7 +180,7 @@ in {
             // so to put another output directly adjacent to it on the right, set its x to 1920.
             // If the position is unset or results in an overlap, the output is instead placed
             // automatically.
-            position x=1920 y=0
+            position x=${monitor2PositionX} y=0
         }
 
         // Settings that influence how windows are positioned and sized.
@@ -467,7 +469,7 @@ in {
         window-rule {
             geometry-corner-radius 12
             clip-to-geometry true
-            default-column-width { fixed 1920; }
+            default-column-width { fixed 1880; }
         }
 
         // Set open-maximized to true for all windows.
