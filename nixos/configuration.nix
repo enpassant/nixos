@@ -197,7 +197,7 @@ BrowseProtocols all
     mc
     pulseaudio
     openvpn
-    wireguard-tools
+    waypipe
     podman-compose
     home-manager
   ] ++ (if libreOffice == true then
