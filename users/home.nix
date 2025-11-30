@@ -39,6 +39,14 @@ in {
     };
   };
 
+  services.wayvnc = {
+    enable = true;
+    settings = {
+      address = "localhost";
+      port = 15901;
+    };
+  };
+  
   gtk.colorScheme = "dark";
 
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
