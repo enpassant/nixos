@@ -4,8 +4,8 @@ let
   inherit (userSet)
     toggleScript
     theKBDLayout theKBDOptions
-    monitor1Name monitor1Mode monitor1PositionX
-    monitor2Name monitor2Mode monitor2PositionX;
+    monitor1Name monitor1Mode monitor1PositionX monitor1Scale
+    monitor2Name monitor2Mode monitor2PositionX monitor2Scale;
 in {
     home.file.".config/niri/config.kdl".text = ''
         // This config is in the KDL format: https://kdl.dev
@@ -134,7 +134,7 @@ in {
             mode "${monitor1Mode}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-            scale 1
+            scale ${monitor1Scale}
 
             // Transform allows to rotate the output counter-clockwise, valid values are:
             // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -165,7 +165,7 @@ in {
             mode "${monitor2Mode}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-            scale 1
+            scale ${monitor2Scale}
 
             // Transform allows to rotate the output counter-clockwise, valid values are:
             // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -469,11 +469,11 @@ in {
         window-rule {
             geometry-corner-radius 12
             clip-to-geometry true
-            default-column-width { fixed 1880; }
+            // default-column-width { fixed 1880; }
         }
 
         // Set open-maximized to true for all windows.
-        /-window-rule {
+        window-rule {
             open-maximized true
         }
 
