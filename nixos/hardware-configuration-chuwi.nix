@@ -26,6 +26,23 @@
 
   swapDevices = [ ];
 
+  fileSystems."/home/feca/projects" = {
+    device = "feca@blitzwolf:/home/feca/projects";
+    fsType = "sshfs";
+    options = [
+      # Filesystem options
+      "allow_other" # for non-root access
+      "_netdev" # this is a network fs
+      "x-systemd.automount" # mount on demand
+
+      # SSH options
+      "reconnect" # handle connection drops
+      "ServerAliveInterval=15" # keep connections alive
+      "IdentityFile=/var/secrets/blitzwolf"
+      "Port=3922"
+    ];
+  };
+  
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
