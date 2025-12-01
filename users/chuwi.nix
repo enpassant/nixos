@@ -12,7 +12,4 @@ in {
   monitor1PositionX = "0";
   monitor1Scale = "2";
   monitor2Name = "HDMI-A-1";
-  monitor2Mode = "1920x1080";
-  monitor2PositionX = "1920";
-  monitor2Scale = "1";
 }

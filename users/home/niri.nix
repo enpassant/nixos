@@ -3,9 +3,9 @@
 let
   inherit (userSet)
     toggleScript
-    theKBDLayout theKBDOptions
-    monitor1Name monitor1Mode monitor1PositionX monitor1Scale
-    monitor2Name monitor2Mode monitor2PositionX monitor2Scale;
+    theKBDLayout theKBDOptions;
+    # monitor1Name or "HDMI-A-1" monitor1Mode or "1920x1080" monitor1PositionX monitor1Scale
+    # monitor2Name monitor2Mode or "1920x1080" monitor2PositionX monitor2Scale;
 in {
     home.file.".config/niri/config.kdl".text = ''
         // This config is in the KDL format: https://kdl.dev
@@ -120,7 +120,7 @@ in {
             position x=1920 y=0
         }
 
-        output "${monitor1Name}" {
+        output "${userSet.monitor1Name or "HDMI-A-1"}" {
             // Uncomment this line to disable this output.
             // off
 
@@ -131,10 +131,10 @@ in {
             // If the mode is omitted altogether or is invalid, niri will pick one automatically.
             // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
             // mode "1920x1080"
-            mode "${monitor1Mode}"
+            mode "${userSet.monitor1Mode or "1920x1080"}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-            scale ${monitor1Scale}
+            scale ${userSet.monitor1Scale or "1"}
 
             // Transform allows to rotate the output counter-clockwise, valid values are:
             // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -149,10 +149,10 @@ in {
             // so to put another output directly adjacent to it on the right, set its x to 1920.
             // If the position is unset or results in an overlap, the output is instead placed
             // automatically.
-            position x=${monitor1PositionX} y=0
+            position x=${userSet.monitor1PositionX or "0"} y=0
         }
 
-        output "${monitor2Name}" {
+        output "${userSet.monitor2Name or "HDMI-A-2"}" {
             // Uncomment this line to disable this output.
             // off
 
@@ -162,10 +162,10 @@ in {
             // for the resolution.
             // If the mode is omitted altogether or is invalid, niri will pick one automatically.
             // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-            mode "${monitor2Mode}"
+            mode "${userSet.monitor2Mode or "1920x1080"}"
 
             // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-            scale ${monitor2Scale}
+            scale ${userSet.monitor2Scale or "1"}
 
             // Transform allows to rotate the output counter-clockwise, valid values are:
             // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -180,7 +180,7 @@ in {
             // so to put another output directly adjacent to it on the right, set its x to 1920.
             // If the position is unset or results in an overlap, the output is instead placed
             // automatically.
-            position x=${monitor2PositionX} y=0
+            position x=${userSet.monitor2PositionX or "1920"} y=0
         }
 
         // Settings that influence how windows are positioned and sized.
