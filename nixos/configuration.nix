@@ -102,7 +102,7 @@ in {
   programs.niri.enable = true;
   services.displayManager.sessionPackages = [ pkgs.niri ];
 
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
   # xdg.portal = {
   #   enable = true;
   #   wlr.enable = true;

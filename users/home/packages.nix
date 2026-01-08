@@ -15,10 +15,10 @@ in {
     wl-clipboard xclip
     wlogout
     gotop htop bottom
-    mpc-cli pavucontrol
+    mpc pavucontrol
     aerc pandoc
     marksman
-    rofi-wayland
+    rofi
     libnotify
     mc
     exiftool
@@ -38,7 +38,7 @@ in {
     pkgs-unstable.zig_0_15 pkgs-unstable.zls_0_15 gnumake
     jetbrains.idea-ultimate
     gleam erlang rebar3 inotify-tools
-    pkgs-unstable.roc
+    roc
     obs-studio vlc
     yt-dlp
     xournalpp

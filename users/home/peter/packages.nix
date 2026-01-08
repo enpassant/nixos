@@ -15,10 +15,10 @@ in {
     wl-clipboard xclip
     wlogout
     gotop htop bottom
-    mpc-cli pavucontrol
+    mpc pavucontrol
     aerc pandoc
     marksman
-    rofi-wayland
+    rofi
     libnotify
     mc
     exiftool
