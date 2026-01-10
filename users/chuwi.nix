@@ -4,7 +4,7 @@ in {
   # User Variables
   inherit toggleScript;
   flakeUser="-chuwi";
-  theKBDLayout = "hu(us),hu(oldhunlig)";
+  theKBDLayout = "hu(us),hu,hu(oldhunlig)";
   theKBDVariant = "";
   theKBDOptions = "grp:win_space_toggle,compose:sclk";
   monitor1Name = "DP-1";
