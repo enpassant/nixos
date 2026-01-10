@@ -19,6 +19,15 @@ in {
       sixel = true;
     };
     commands = {
+      unarchive = ''%{{
+        case "$f" in
+          *.zip) unzip "$f" ;;
+          *.tar.gz) tar -xzvf "$f" ;;
+          *.tar.bz2) tar -xjvf "$f" ;;
+          *.tar) tar -xvf "$f" ;;
+          *) echo "Unsupported format" ;;
+        esac
+      }}'';
       mkdir = ''%{{
         set -f
         printf "Directory name: "
@@ -42,6 +51,7 @@ in {
     };
 
     keybindings = {
+      au = "unarchive";
       m = "";
       ms = "mark-save";
       md = "mkdir";
