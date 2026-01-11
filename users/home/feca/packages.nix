@@ -40,6 +40,7 @@ in {
     jetbrains.idea-ultimate
     gleam erlang rebar3 inotify-tools
     # roc
+    koka
     obs-studio vlc
     yt-dlp
     xournalpp
