@@ -27,7 +27,7 @@ in {
     tldr fastfetch
     keepassxc
     teams-for-linux
-    remmina freerdp
+    freerdp
     virtualbox qemu
     calibre
     font-awesome spotify swayidle swaylock
