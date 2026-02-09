@@ -64,6 +64,8 @@ in {
 
   console.keyMap = "${theKBDLayout}";
 
+  programs.nix-ld.enable = true;
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
