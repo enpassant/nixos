@@ -3,6 +3,7 @@
 let
   inherit (userSet)
     toggleScript
+    terminal terminal2
     theKBDLayout theKBDOptions;
     # monitor1Name or "HDMI-A-1" monitor1Mode or "1920x1080" monitor1PositionX monitor1Scale
     # monitor2Name monitor2Mode or "1920x1080" monitor2PositionX monitor2Scale;
@@ -17,7 +18,7 @@ in {
         // Find the full list of options on the wiki:
         // https://yalter.github.io/niri/Configuration:-Input
 
-        // include "first.kdl"
+        include "first.kdl"
 
         input {
             keyboard {
@@ -188,7 +189,7 @@ in {
         // https://yalter.github.io/niri/Configuration:-Layout
         layout {
             // Set gaps around windows in logical pixels.
-            gaps 16
+            gaps 8
 
             // When to center a column when changing focus, options are:
             // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -542,8 +543,8 @@ in {
             Mod+Shift+Slash { show-hotkey-overlay; }
 
             // Suggested binds for running programs: terminal, app launcher, screen locker.
-            Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "foot"; }
-            Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "ghostty"; }
+            Mod+T hotkey-overlay-title="Open a Terminal: ${terminal2}" { spawn "${terminal2}"; }
+            Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }
             Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show"; }
             Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -817,6 +818,6 @@ in {
             Mod+Shift+P { power-off-monitors; }
         }
 
-        // include "last.kdl"
+        include "last.kdl"
     '';
 }
