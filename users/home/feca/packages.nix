@@ -49,5 +49,6 @@ in {
     xwayland-satellite
     xdg-desktop-portal-gnome
     blesh
+    iwe graphviz
   ];
 }
