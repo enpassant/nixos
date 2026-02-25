@@ -267,7 +267,7 @@ BrowseProtocols all
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [ "feca" ];
+      AllowUsers = [ "feca" "peter" ];
     };
   };
   
