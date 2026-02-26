@@ -352,6 +352,8 @@ in {
         // Note that running niri as a session supports xdg-desktop-autostart,
         // which may be more convenient to use.
         // See the binds section below for more spawn examples.
+        
+        spawn-at-startup "ibus start"
 
         // This line starts waybar, a commonly used bar for Wayland compositors.
         spawn-at-startup "waybar"

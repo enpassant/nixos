@@ -38,7 +38,7 @@ in {
     # vhs gum confetty slides graph-easy glow cowsay
     # tmuxp
     # pkgs-unstable.zig_0_15 pkgs-unstable.zls_0_15 gnumake
-    # jetbrains.idea-ultimate
+    # jetbrains.idea
     jetbrains.pycharm-professional
     python313
     # gleam erlang rebar3 inotify-tools
@@ -46,10 +46,12 @@ in {
     # obs-studio vlc
     # yt-dlp
     # xournalpp
-    # texliveFull
+    texliveFull
     # duckdb
     xwayland-satellite
     xdg-desktop-portal-gnome
     blesh
+    vscode
+    pkgs-unstable.iwe graphviz
   ];
 }

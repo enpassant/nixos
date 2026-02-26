@@ -37,7 +37,7 @@ in {
     vhs gum confetty slides graph-easy glow cowsay
     tmuxp
     pkgs-unstable.zig_0_15 pkgs-unstable.zls_0_15 gnumake
-    jetbrains.idea-ultimate
+    jetbrains.idea
     gleam erlang rebar3 inotify-tools
     # roc
     koka
