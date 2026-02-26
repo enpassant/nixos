@@ -39,8 +39,8 @@ in {
     # tmuxp
     # pkgs-unstable.zig_0_15 pkgs-unstable.zls_0_15 gnumake
     # jetbrains.idea
-    jetbrains.pycharm-professional
-    python313
+    jetbrains.pycharm
+    (python313.withPackages(ppkgs: [ppkgs.biopython]))
     # gleam erlang rebar3 inotify-tools
     # pkgs-unstable.roc
     # obs-studio vlc
