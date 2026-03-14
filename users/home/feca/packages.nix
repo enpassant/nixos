@@ -38,7 +38,7 @@ in {
     tmuxp
     pkgs-unstable.zig_0_15 pkgs-unstable.zls_0_15 gnumake
     jetbrains.idea
-    gleam erlang rebar3 inotify-tools
+    pkgs-unstable.gleam erlang rebar3 inotify-tools
     # roc
     koka
     obs-studio vlc
