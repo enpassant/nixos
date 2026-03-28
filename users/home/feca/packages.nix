@@ -27,7 +27,8 @@ in {
     tldr fastfetch
     keepassxc
     teams-for-linux
-    freerdp
+    remmina
+    # freerdp
     virtualbox qemu
     calibre
     font-awesome spotify swayidle swaylock
@@ -46,7 +47,7 @@ in {
     xournalpp
     texliveFull
     duckdb
-    xwayland-satellite
+    # xwayland-satellite
     xdg-desktop-portal-gnome
     blesh
     pkgs-unstable.iwe graphviz
