@@ -9,6 +9,12 @@ let
     ho-rebuild="home-manager switch --flake ${flakeDir}#${username}${flakeUser}";
     no-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
     no-update="sudo nix flake update --flake ${flakeDir}";
+    ho-generations="home-manager generations";
+    no-generations="ls -l /nix/var/nix/profiles/system-*-link";
+    ho-rollback="home-manager switch --rollback";
+    no-rollback="sudo nixos-rebuild switch --rollback";
+    ho-switch="_switch(){ .local/state/nix/profiles/home-manager-$1-link/activate }; _switch";
+    no-switch="_switch(){ /nix/var/nix/profiles/system-$1-link/bin/switch-to-configuration switch }; _switch";
     gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     ll = "ls -alh";
     ".." = "cd ..";
