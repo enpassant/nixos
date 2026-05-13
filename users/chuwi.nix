@@ -3,6 +3,7 @@ let
 in {
   # User Variables
   inherit toggleScript;
+  libreOffice = true;
   flakeUser="-chuwi";
   theKBDLayout = "hu(us),hu,hu(oldhunlig)";
   theKBDVariant = "";

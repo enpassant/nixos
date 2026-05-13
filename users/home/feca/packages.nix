@@ -1,7 +1,7 @@
 { pkgs, pkgs-unstable, config, username, userSet, ... }:
 
 let
-  inherit (userSet) browser flakeDir;
+  inherit (userSet) browser flakeDir libreOffice;
 in {
   # Install Packages For The User
   home.packages = with pkgs; [
@@ -28,7 +28,7 @@ in {
     keepassxc
     teams-for-linux
     remmina
-    # freerdp
+    freerdp
     virtualbox qemu
     calibre
     font-awesome spotify swayidle swaylock
@@ -47,9 +47,18 @@ in {
     xournalpp
     texliveFull
     duckdb
-    # xwayland-satellite
+    xwayland-satellite
     xdg-desktop-portal-gnome
     blesh
     pkgs-unstable.iwe graphviz
-  ];
+  ] ++ (if libreOffice == true then
+  [
+    libreoffice-qt
+    hunspell
+    hunspellDicts.hu_HU
+    hunspellDicts.en_US
+    gimp
+  ]
+  else [])
+  ;
 }

@@ -7,6 +7,7 @@ in {
   # User Variables
   inherit username;
   inherit userHome;
+  libreOffice = true;
   editor = "hx";
   gitUsername = "Enpassant";
   gitEmail = "enpassant.prog@gmail.com";

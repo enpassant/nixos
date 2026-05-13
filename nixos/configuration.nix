@@ -202,15 +202,7 @@ BrowseProtocols all
     waypipe
     podman-compose
     home-manager
-  ] ++ (if libreOffice == true then
-    [
-      libreoffice-qt
-      hunspell
-      hunspellDicts.hu_HU
-      hunspellDicts.en_US
-      gimp
-    ]
-  else []);
+  ];
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
     text = ''
