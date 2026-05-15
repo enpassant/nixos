@@ -34,6 +34,8 @@ in {
     options snd-hda-intel model=alc283-headset,dell-headset-multi
   '';
 
+  boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
+
   networking.hostName = "${hostname}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -172,7 +174,7 @@ BrowseProtocols all
   users.users."${username}" = {
     isNormalUser = true;
     description = "${displayUsername}";
-    extraGroups = [ "networkmanager" "wheel" "polkituser" "audio" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "polkituser" "audio" "podman" "kvm" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];
@@ -202,6 +204,12 @@ BrowseProtocols all
     waypipe
     podman-compose
     home-manager
+    qemu qemu_kvm
+    (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+      qemu-system-x86_64 \
+        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+        "$@"
+    '')
   ];
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
