@@ -40,7 +40,7 @@ in {
         read filename
         $EDITOR $filename
       }}'';
-      open = ''''$sh ~/.config/lf/opener $fx'';
+      # open = ''''$sh ~/.config/lf/opener $fx'';
       eval = ''&{{
         cmd="send $id"
         for arg; do
@@ -56,6 +56,8 @@ in {
       ms = "mark-save";
       md = "mkdir";
       mf = "mkfile";
+      
+      o = ''$sh ~/.config/lf/opener $fx'';
 
       x = "cut";
       d = "";
@@ -70,7 +72,7 @@ in {
       gv = ''$lf -remote "send $id cd $(xdg-user-dir VIDEOS)"'';
       "<enter>" = "shell";
 
-      i = ''$LESSOPEN='| ˜/.config/lf/preview %s' less -R $f'';
+      i = ''$~/.config/lf/preview $fx | bat'';
       SP = ''$if test -f /tmp/text-preview; then rm /tmp/text-preview; else touch /tmp/text-preview; fi; lf -remote "send $id reload"'';
       SB = ''$~/bin/show_bg.sh $f'';
     };
