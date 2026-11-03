@@ -199,7 +199,6 @@ BrowseProtocols all
     lf
     helix
     tmux
-    git
     mc
     pulseaudio
     openvpn
@@ -213,6 +212,17 @@ BrowseProtocols all
         "$@"
     '')
   ];
+
+  programs.git = {
+    enable = true;
+    config = {
+      credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+    };
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
     text = ''
