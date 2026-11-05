@@ -17,6 +17,7 @@ in lib.mkIf (vm == "hyprland" || vm == "sway") {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+    configType = "hyprlang";
     plugins = [
       # hyprplugins.hyprtrails
     ];

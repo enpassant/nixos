@@ -103,7 +103,7 @@ in {
     enable = true;
     wayland.enable = true;
   };
-  # services.xserver.displayManager.defaultSession = "${vm}";
+  services.xserver.displayManager.defaultSession = "${vm}";
 
   programs.niri.enable = true;
   services.displayManager.sessionPackages = [ pkgs.niri ];
@@ -315,5 +315,6 @@ BrowseProtocols all
     # substituters = ["https://hyprland.cachix.org"];
     # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     experimental-features = [ "nix-command" "flakes" ];
+    max-jobs = 8;
   };
 }

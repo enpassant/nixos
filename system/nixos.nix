@@ -1,7 +1,8 @@
 {
   username = "feca";
   displayUsername = "Enpassant";
-  vm = "sway";
+  vm = "niri";
+  # vm = "sway";
   # vm = "hyprland";
 
   # System Settings
