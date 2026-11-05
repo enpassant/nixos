@@ -51,6 +51,7 @@ in {
     xdg-desktop-portal-gnome
     blesh
     pkgs-unstable.iwe graphviz
+    pkgs-unstable.codex
   ] ++ (if libreOffice == true then
   [
     libreoffice-qt

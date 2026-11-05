@@ -223,6 +223,7 @@ BrowseProtocols all
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
   
+  environment.localBinInPath = true;
   environment.shells = [ pkgs.zsh ];
   environment.etc."wireplumber/main.lua.d/90-suspend-timeout.lua" = {
     text = ''
